@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wnC-s6-L1z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wnC-s6-L1z">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -15,6 +15,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RG2-jK-BPh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="ROg-mN-aqz" kind="relationship" relationship="rootViewController" id="l33-zF-zwJ"/>
@@ -35,7 +36,20 @@
                     <view key="view" contentMode="scaleToFill" id="jSf-aV-djL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-ic-giK">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <animations/>
+                            </mapView>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9xP-ic-giK" firstAttribute="top" secondItem="SBm-2u-97N" secondAttribute="bottom" id="6gu-AQ-VTP"/>
+                            <constraint firstItem="jAg-BB-l7A" firstAttribute="top" secondItem="9xP-ic-giK" secondAttribute="bottom" id="TuF-pJ-0hh"/>
+                            <constraint firstItem="9xP-ic-giK" firstAttribute="leading" secondItem="jSf-aV-djL" secondAttribute="leading" id="ZxS-6T-bOn"/>
+                            <constraint firstAttribute="trailing" secondItem="9xP-ic-giK" secondAttribute="trailing" id="o62-zO-dSq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="d0Q-Gx-qWF">
                         <barButtonItem key="backBarButtonItem" title="Logout" id="qZ3-Lc-CKc"/>
@@ -49,6 +63,9 @@
                             <barButtonItem image="MapMarker" id="J9a-IM-h9u" userLabel="MapMarker"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="9xP-ic-giK" id="iZG-uY-ab6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCM-nj-giR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,6 +78,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="r4o-hk-N6U">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="et3-EY-1Am">
@@ -69,7 +87,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="et3-EY-1Am" id="2u4-H4-cON">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -100,6 +120,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gsk-jU-jzs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="w43-Ew-awJ" kind="relationship" relationship="rootViewController" id="v9U-wE-iSt"/>
@@ -117,6 +138,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
@@ -148,24 +170,28 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRm-W6-1ox" userLabel="UdacityLoginLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="520" height="34"/>
+                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YWX-jz-22g" userLabel="UsernameField">
                                                 <rect key="frame" x="0.0" y="43" width="520" height="34"/>
+                                                <animations/>
                                                 <color key="backgroundColor" red="0.8459782600402832" green="0.85953682661056519" blue="0.87780684232711792" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IF2-co-vUU" userLabel="PasswordField">
                                                 <rect key="frame" x="0.0" y="86" width="520" height="34"/>
+                                                <animations/>
                                                 <color key="backgroundColor" red="0.84597825999999998" green="0.85953682659999997" blue="0.87780684229999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Uo-IH-jEs" userLabel="LoginButton">
                                                 <rect key="frame" x="0.0" y="129" width="520" height="34"/>
+                                                <animations/>
                                                 <color key="backgroundColor" red="0.23465768914473681" green="0.69623766450000002" blue="0.18775699009999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -175,6 +201,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstItem="qRm-W6-1ox" firstAttribute="height" secondItem="2Uo-IH-jEs" secondAttribute="height" id="EhC-es-hYV"/>
                                             <constraint firstItem="IF2-co-vUU" firstAttribute="height" secondItem="2Uo-IH-jEs" secondAttribute="height" id="Pg0-Nz-2jS"/>
@@ -183,8 +210,10 @@
                                     </stackView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WTY-ki-TjN">
                                         <rect key="frame" x="410" y="136" width="20" height="20"/>
+                                        <animations/>
                                     </activityIndicatorView>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="TQQ-q7-iHp" firstAttribute="leading" secondItem="0IG-DO-DL4" secondAttribute="leading" constant="20" id="ASI-qW-pHt"/>
@@ -196,6 +225,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.93495482206344604" green="1" blue="0.92421907186508179" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="0IG-DO-DL4" secondAttribute="trailing" id="2Sr-TR-AKd"/>

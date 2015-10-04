@@ -20,6 +20,9 @@ struct StudentInformation {
 	let createdAt: String
 	let updatedAt: String?
 
+	// This property will be set after initialization:
+	var udacityProfileName: String?
+
 	init?(values: [String: AnyObject]) {
 		let helper = JSONHelper(values: values)
 		objectId  = helper.string("objectId") ?? ""

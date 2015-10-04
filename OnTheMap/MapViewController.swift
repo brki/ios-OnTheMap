@@ -7,28 +7,55 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
 
+	@IBOutlet weak var mapView: MKMapView!
+
+	var parse = ParseClient.sharedInstance
+//	var pins = MapPins()
+//	var studentInfos: [StudentInformation]?
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		ParseClient.sharedInstance.getStudentLocations() { results, error in
-			guard let results = results where error == nil else {
-				print("TODO: deal with error: \(error)")
+		mapView.delegate = self
+//		mapView.region = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
+	}
+
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+	}
+
+	deinit {
+		mapView.delegate = nil
+	}
+
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+
+		parse.latestStudentInfos() { studentInfos, error in
+			guard let infos = studentInfos else {
+				// TODO: handle error
 				return
 			}
-			var infos = [StudentInformation]()
-			for result in results {
-				if let info = StudentInformation(values: result) {
-					infos.append(info)
+			AnnotationManager.sharedInstance.updateAnnotationsWithStudentInformation(infos) { added, removed in
+				if removed.count > 0 {
+					dispatch_async(dispatch_get_main_queue()) {
+						self.mapView.removeAnnotations(removed as [MKAnnotation])
+					}
+				}
+				if added.count > 0 {
+					dispatch_async(dispatch_get_main_queue()) {
+						self.mapView.addAnnotations(added as [MKAnnotation])
+					}
 				}
 			}
-			print(infos)
 		}
-		// Do any additional setup after loading the view, typically from a nib.
 	}
 
 	override func didReceiveMemoryWarning() {
+		// TODO: anything to do here?  Throwing away studentInfos perhaps not worth it.
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
@@ -51,5 +78,32 @@ class MapViewController: UIViewController {
 		presentViewController(alertController, animated: true, completion: nil)
 	}
 
+
+}
+
+// MARK: map view delegate
+
+extension MapViewController: MKMapViewDelegate {
+	// TODO: implement method to get annotation view, and set pin color
+	func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+		let recentness = CGFloat((annotation as! StudentAnnotation).recentness)
+		var pin: MKPinAnnotationView?
+		pin = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as? MKPinAnnotationView
+		if pin == nil {
+			pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+			pin?.canShowCallout = true
+			// perhaps TODO: use pin?.detailCalloutAccessoryView (which replaces the subtitle), and
+			// use a vertical stack view with "student url" info and posted date.
+			// For this, create a custom view.
+		}
+
+		guard let mapPin = pin else {
+			return nil
+		}
+
+		mapPin.annotation = annotation
+		mapPin.pinTintColor = UIColor(red: CGFloat(1), green: recentness, blue: CGFloat(recentness / 2), alpha: CGFloat(1))
+		return mapPin
+	}
 }
 

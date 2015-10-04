@@ -169,7 +169,7 @@ extension WebClient {
 Example PathComponentProviding-implementing enum:
 
 enum AutoHousePaths: String, PathComponentProviding {
-	case Fridge = "refridgerator"
+	case Fridge = "refrigerator"
 	case Fan = "fan/{room}"
 	func pathComponent() -> String { return self.rawValue }
 }
