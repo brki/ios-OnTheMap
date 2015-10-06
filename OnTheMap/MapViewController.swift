@@ -15,8 +15,6 @@ class MapViewController: UIViewController {
 	@IBOutlet weak var refreshButton: UIBarButtonItem!
 
 	var parse = ParseClient.sharedInstance
-//	var pins = MapPins()
-//	var studentInfos: [StudentInformation]?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -93,7 +91,6 @@ class MapViewController: UIViewController {
 // MARK: map view delegate
 
 extension MapViewController: MKMapViewDelegate {
-	// TODO: implement method to get annotation view, and set pin color
 	func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
 		let studentAnnotation = annotation as! StudentAnnotation
 		let recentness = CGFloat(studentAnnotation.recentness)
@@ -101,30 +98,20 @@ extension MapViewController: MKMapViewDelegate {
 		pin = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as? MKPinAnnotationView
 		if pin == nil {
 			pin = MKPinAnnotationView(annotation: studentAnnotation, reuseIdentifier: "pin")
-			pin?.canShowCallout = true
-			pin?.animatesDrop = true
-			let dateString = DateFormatter.sharedInstance.localizedDateString(studentAnnotation.date)
-//			pin?.detailCalloutAccessoryView = DetailCallout(labelTexts: [studentAnnotation.subtitle!, dateString])
-			pin?.detailCalloutAccessoryView = DetailCallout(labelTexts: [studentAnnotation.subtitle!, studentAnnotation.uniqueStringId])
-
-//			let stackView = UIStackView()
-//			stackView.axis = .Vertical
-//			let subView = UILabel()
-//			subView.text = "hello"
-//			subView.backgroundColor = UIColor.greenColor()
-//			stackView.addArrangedSubview(subView)
-//			pin?.detailCalloutAccessoryView = stackView
-			// perhaps TODO: use pin?.detailCalloutAccessoryView (which replaces the subtitle), and
-			// use a vertical stack view with "student url" info and posted date.
-			// For this, create a custom view.
 		}
 
 		guard let mapPin = pin else {
 			return nil
 		}
+        mapPin.annotation = studentAnnotation
+        mapPin.canShowCallout = true
+        mapPin.animatesDrop = true
+        let dateString = DateFormatter.sharedInstance.localizedDateString(studentAnnotation.date)
+        mapPin.detailCalloutAccessoryView = DetailCallout(labelTexts: [studentAnnotation.subtitle!, dateString])
 
-		mapPin.annotation = annotation
-		mapPin.pinTintColor = UIColor(red: CGFloat(1), green: recentness, blue: CGFloat(recentness / 3), alpha: CGFloat(1))
+        // Recent pins will be bright red, older ones faded red:
+        let fade = (1 - recentness) / 1.5
+		mapPin.pinTintColor = UIColor(red: 1, green: fade, blue: fade, alpha: 1)
 		return mapPin
 	}
 }

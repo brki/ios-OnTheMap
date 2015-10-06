@@ -23,7 +23,6 @@ class AnnotationManager {
 		}
 		annotations = newAnnotations
 	}
-
 }
 
 

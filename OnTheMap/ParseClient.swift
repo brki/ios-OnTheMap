@@ -28,8 +28,6 @@ class ParseClient: WebClient {
 
 		return makeJSONDataRequest(url, requestMethod: requestMethod, headers: headers, body: body, completionHandler: completionHandler)
 	}
-
-
 }
 
 
