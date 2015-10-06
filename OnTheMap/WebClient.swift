@@ -190,11 +190,16 @@ struct WebClientRouter {
 		}
 	}
 
-	func url(enumObject: PathComponentProviding, params: [String: String]? = nil) -> NSURL? {
+	func url(enumObject: PathComponentProviding, pathParams: [String: String]? = nil, queryParams: [String: String]? = nil) -> NSURL? {
 		var path = enumObject.pathComponent()
-		if let params = params {
+		if let params = pathParams {
 			path = encoder.pathWithEncodedReplacements(path, params: params)
 		}
-		return baseURL.URLByAppendingPathComponent(path)
+		let url = baseURL.URLByAppendingPathComponent(path)
+		if let params = queryParams where params.count > 0, let queryString = encoder.encodedQueryStringFromParams(params) {
+			return NSURL(string: queryString, relativeToURL: url)
+		} else {
+			return url
+		}
 	}
 }

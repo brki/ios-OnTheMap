@@ -9,6 +9,7 @@
 import Foundation
 
 struct StudentInformation {
+
 	let objectId: String
 	let uniqueKey: String
 	let firstName: String
@@ -17,11 +18,8 @@ struct StudentInformation {
 	let mediaURL: String
 	let latitude: Float
 	let longitude: Float
-	let createdAt: String
-	let updatedAt: String?
-
-	// This property will be set after initialization:
-	var udacityProfileName: String?
+	let createdAt: NSDate
+	let updatedAt: NSDate
 
 	init?(values: [String: AnyObject]) {
 		let helper = JSONHelper(values: values)
@@ -33,12 +31,14 @@ struct StudentInformation {
 		mediaURL  = helper.string("mediaURL") ?? ""
 		latitude  = helper.float("latitude") ?? Float(0)
 		longitude = helper.float("longitude") ?? Float(0)
-		createdAt = helper.string("createdAt") ?? ""
-		updatedAt = helper.string("updatedAt")
+		let createdAtString = helper.string("createdAt") ?? ""
+		let updatedAtString = helper.string("updatedAt") ?? ""
 		if helper.errorFields.count > 0 {
 			print("No value found for these required fields: \(helper.errorFields)")
 			return nil
 		}
+		createdAt = DateFormatter.sharedInstance.dateFromISO8601String(createdAtString) ?? NSDate()
+		updatedAt = DateFormatter.sharedInstance.dateFromISO8601String(updatedAtString) ?? NSDate()
 	}
 }
 

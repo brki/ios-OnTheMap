@@ -28,6 +28,8 @@ class ParseClient: WebClient {
 
 		return makeJSONDataRequest(url, requestMethod: requestMethod, headers: headers, body: body, completionHandler: completionHandler)
 	}
+
+
 }
 
 
@@ -55,7 +57,7 @@ extension ParseClient {
 			params["skip"] = String((page-1) * perPage)
 		}
 
-		APIRequest(router.url(Path.StudentLocation, params: params)!, requestMethod: .GET) { jsonObject, response, error in
+		APIRequest(router.url(Path.StudentLocation, queryParams: params)!, requestMethod: .GET) { jsonObject, response, error in
 			if let json = jsonObject as? [String: AnyObject],
 				results = json["results"] as? [[String: AnyObject]] {
 					completionHandler(results: results, error: nil)

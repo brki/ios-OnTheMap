@@ -59,12 +59,17 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="WYv-RK-bLk"/>
+                            <barButtonItem systemItem="refresh" id="WYv-RK-bLk">
+                                <connections>
+                                    <action selector="refreshStudentLocations:" destination="ROg-mN-aqz" id="3bF-qx-RVb"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="MapMarker" id="J9a-IM-h9u" userLabel="MapMarker"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="9xP-ic-giK" id="iZG-uY-ab6"/>
+                        <outlet property="refreshButton" destination="WYv-RK-bLk" id="lBo-Wb-p7g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCM-nj-giR" userLabel="First Responder" sceneMemberID="firstResponder"/>

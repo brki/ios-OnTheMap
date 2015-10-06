@@ -15,7 +15,6 @@ class AnnotationManager {
 	var annotations = Set<StudentAnnotation>()
 
 	func updateAnnotations(newAnnotations: Set<StudentAnnotation>, changeHandler: ((added: [StudentAnnotation], removed: [StudentAnnotation]) -> Void)? = nil) {
-
 		if let handler = changeHandler {
 			handler(
 				added: Array(newAnnotations.subtract(annotations)),
