@@ -90,9 +90,9 @@ class UdacityClient: WebClient {
 			}
 
 			if let json = jsonObject as? [String: AnyObject] where json.indexForKey("session") != nil && json.count == 1 {
-					self.accountKey = nil
-					self.sessionID = nil
-					completionHandler(true, nil)
+				self.accountKey = nil
+				self.sessionID = nil
+				completionHandler(true, nil)
 			} else {
 				completionHandler(false, Error.UnexpectedJSONStructure.asNSError())
 			}

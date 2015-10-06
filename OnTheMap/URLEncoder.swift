@@ -13,7 +13,7 @@ class URLEncoder {
 
 	/**
 	Character set containing all characters allowed in a path compent (e.g. between two '/' characters in a URL's path).
-	
+
 	This is NSCharacterSet.URLPathAllowedCharacterSet() minus the '/' character.
 	*/
 	lazy var pathComponentAllowedCharacterSet: NSCharacterSet = {
@@ -52,7 +52,7 @@ class URLEncoder {
 	/**
 	Replaces placeholders in the given String with path-component encoded values, provided
 	that the params has the placeholders as keys and replacement texts as values.
-	
+
 	For example, ``stringWithPathEncodedReplacements("/foo/{1}/bar", params: ["{1}": "buzz buzz")
 	will result in
 	``/foo/buzz%20buzz/bar``

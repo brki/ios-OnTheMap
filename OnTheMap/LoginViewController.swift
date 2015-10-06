@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
 	// The loginFormWrapper exists to avoid a problem of the left margin
 	// of the text fields being shifted (and leftover text still appearing
 	// between the left edge and the shifted margin) if the shake animation
-	// is applied directly to the 
+	// is applied directly to the UIStackView.
 	@IBOutlet weak var loginFormWrapper: UIView!
 
 	var shakeAnimation: CAKeyframeAnimation?
@@ -102,6 +102,4 @@ class LoginViewController: UIViewController {
 		anim.duration = 7/100
 		loginFormWrapper.layer.addAnimation(anim, forKey:nil)
 	}
-
-
 }

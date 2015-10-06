@@ -19,7 +19,7 @@ class MapViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		mapView.delegate = self
-//		mapView.region = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
+		//		mapView.region = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
 	}
 
 	override func viewWillAppear(animated: Bool) {
@@ -103,14 +103,14 @@ extension MapViewController: MKMapViewDelegate {
 		guard let mapPin = pin else {
 			return nil
 		}
-        mapPin.annotation = studentAnnotation
-        mapPin.canShowCallout = true
-        mapPin.animatesDrop = true
-        let dateString = DateFormatter.sharedInstance.localizedDateString(studentAnnotation.date)
-        mapPin.detailCalloutAccessoryView = DetailCallout(labelTexts: [studentAnnotation.subtitle!, dateString])
+		mapPin.annotation = studentAnnotation
+		mapPin.canShowCallout = true
+		mapPin.animatesDrop = true
+		let dateString = DateFormatter.sharedInstance.localizedDateString(studentAnnotation.date)
+		mapPin.detailCalloutAccessoryView = DetailCallout(labelTexts: [studentAnnotation.subtitle!, dateString])
 
-        // Recent pins will be bright red, older ones faded red:
-        let fade = (1 - recentness) / 1.5
+		// Recent pins will be bright red, older ones faded red:
+		let fade = (1 - recentness) / 1.5
 		mapPin.pinTintColor = UIColor(red: 1, green: fade, blue: fade, alpha: 1)
 		return mapPin
 	}

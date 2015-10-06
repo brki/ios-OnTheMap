@@ -35,5 +35,4 @@ class DateFormatter {
 	func dateFromISO8601String(dateString: String) -> NSDate? {
 		return stringToDateFormatter.dateFromString(dateString)
 	}
-
 }
