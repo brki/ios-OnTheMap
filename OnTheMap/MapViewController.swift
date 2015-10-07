@@ -19,12 +19,13 @@ class MapViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		mapView.delegate = self
+		// TODO perhaps: try to get user's most recent coordinates and set initial map region to a fairly large region
 		//		mapView.region = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
 	}
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		refreshStudentLocations()
+		updateStudentAnnotations(foreceRefresh: false)
 	}
 
 	deinit {
@@ -44,7 +45,7 @@ class MapViewController: UIViewController {
 
 	@IBAction func logout(sender: UIBarButtonItem) {
 		UdacityClient.sharedInstance.logout() { result, error in
-			on_main_queue() {
+			on_main_queue {
 				guard error == nil else {
 					self.showAlert("Logout error", message: error!.localizedDescription)
 					return
@@ -55,29 +56,47 @@ class MapViewController: UIViewController {
 	}
 
 	@IBAction func refreshStudentLocations(sender: AnyObject? = nil) {
-		refreshButton.enabled = false
-		parse.latestStudentInfos() { studentInfos, error in
-			on_main_queue() {
+		updateStudentAnnotations()
+	}
+
+	/**
+	Updates the student annotations.
+	
+	:param: forceRefresh If true, the StudentInformation structures will be downloaded again.  If false, they will only be downloaded if none have
+	        already been downloaded.
+	*/
+	func updateStudentAnnotations(foreceRefresh forceRefresh: Bool = true) {
+
+		func handleStudentInfos(studentInfos: [StudentInformation]?, error: NSError?) {
+			on_main_queue {
 				self.refreshButton.enabled = true
 			}
 			guard let infos = studentInfos else {
-				on_main_queue() {
+				on_main_queue {
 					self.showAlert("Unable to update locations", message: error?.localizedDescription ?? "Unknown error")
 				}
 				return
 			}
 			AnnotationManager.sharedInstance.updateAnnotationsWithStudentInformation(infos) { added, removed in
 				if removed.count > 0 {
-					on_main_queue() {
+					on_main_queue {
 						self.mapView.removeAnnotations(removed as [MKAnnotation])
 					}
 				}
 				if added.count > 0 {
-					on_main_queue() {
+					on_main_queue {
 						self.mapView.addAnnotations(added as [MKAnnotation])
 					}
 				}
 			}
+		}
+
+		refreshButton.enabled = false
+
+		if forceRefresh {
+			parse.latestStudentInfos(handleStudentInfos)
+		} else {
+			parse.studentInfos(handleStudentInfos)
 		}
 	}
 
@@ -144,7 +163,7 @@ extension MapViewController {
 	*/
 	func annotationViewTapped(sender: UITapGestureRecognizer) {
 		if let view = sender.view as? MKAnnotationView where view.selected == true, let annotation = view.annotation as? StudentAnnotation {
-			on_main_queue() {
+			on_main_queue {
 				if !self.openAnnotationURL(annotation) {
 					// Opening failed because there is no valid URL.  No need to try again if user taps again.
 					self.removeTapGestureRecognizers(view)

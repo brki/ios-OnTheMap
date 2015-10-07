@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
 		loginButton.enabled = false
 		loginActivityIndicator.startAnimating()
 		udacityClient.authenticate(username, password: password) { success, error in
-			on_main_queue() {
+			on_main_queue {
 				self.loginButton.enabled = true
 				self.loginActivityIndicator.stopAnimating()
 				if success {
@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
 						return
 					}
 					if err.code == UdacityClient.Error.InvalidLogin.rawValue {
-						on_main_queue() {
+						on_main_queue {
 							self.shakeView()
 						}
 					} else {
@@ -80,7 +80,7 @@ class LoginViewController: UIViewController {
 	}
 
 	func showErrorMessage(title: String?, detail: String? = nil, completionHandler: ((UIAlertAction) -> Void)? = nil) {
-		on_main_queue() {
+		on_main_queue {
 			let alertController = UIAlertController(title: title, message: detail, preferredStyle: .Alert)
 			alertController.addAction(
 				UIAlertAction(title: "OK", style: .Default, handler: completionHandler)
