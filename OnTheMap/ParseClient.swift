@@ -56,8 +56,9 @@ extension ParseClient {
 		}
 
 		APIRequest(router.url(Path.StudentLocation, queryParams: params)!, requestMethod: .GET) { jsonObject, response, error in
-			if let json = jsonObject as? [String: AnyObject],
-				results = json["results"] as? [[String: AnyObject]] {
+			if let error = error {
+				completionHandler(results: nil, error: error)
+			} else if let json = jsonObject as? [String: AnyObject], results = json["results"] as? [[String: AnyObject]] {
 					completionHandler(results: results, error: nil)
 			} else {
 				completionHandler(results: nil, error: Error.UnexpectedJSONStructure.asNSError())

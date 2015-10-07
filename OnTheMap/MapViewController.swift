@@ -61,7 +61,9 @@ class MapViewController: UIViewController {
 				self.refreshButton.enabled = true
 			}
 			guard let infos = studentInfos else {
-				// TODO: handle error
+				on_main_queue() {
+					self.showAlert("Unable to update locations", message: error?.localizedDescription ?? "Unknown error")
+				}
 				return
 			}
 			AnnotationManager.sharedInstance.updateAnnotationsWithStudentInformation(infos) { added, removed in
