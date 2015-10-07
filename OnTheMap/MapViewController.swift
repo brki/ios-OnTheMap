@@ -44,7 +44,7 @@ class MapViewController: UIViewController {
 
 	@IBAction func logout(sender: UIBarButtonItem) {
 		UdacityClient.sharedInstance.logout() { result, error in
-			dispatch_async(dispatch_get_main_queue()) {
+			on_main_queue() {
 				guard error == nil else {
 					self.showAlert("Logout error", message: error!.localizedDescription)
 					return
@@ -57,7 +57,7 @@ class MapViewController: UIViewController {
 	@IBAction func refreshStudentLocations(sender: AnyObject? = nil) {
 		refreshButton.enabled = false
 		parse.latestStudentInfos() { studentInfos, error in
-			dispatch_async(dispatch_get_main_queue()) {
+			on_main_queue() {
 				self.refreshButton.enabled = true
 			}
 			guard let infos = studentInfos else {
@@ -66,12 +66,12 @@ class MapViewController: UIViewController {
 			}
 			AnnotationManager.sharedInstance.updateAnnotationsWithStudentInformation(infos) { added, removed in
 				if removed.count > 0 {
-					dispatch_async(dispatch_get_main_queue()) {
+					on_main_queue() {
 						self.mapView.removeAnnotations(removed as [MKAnnotation])
 					}
 				}
 				if added.count > 0 {
-					dispatch_async(dispatch_get_main_queue()) {
+					on_main_queue() {
 						self.mapView.addAnnotations(added as [MKAnnotation])
 					}
 				}
