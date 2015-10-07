@@ -90,31 +90,122 @@ class MapViewController: UIViewController {
 
 }
 
-// MARK: map view delegate
+// MARK: MKMapViewDelegate methods
 
 extension MapViewController: MKMapViewDelegate {
+
 	func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
 		let studentAnnotation = annotation as! StudentAnnotation
 		let recentness = CGFloat(studentAnnotation.recentness)
-		var pin: MKPinAnnotationView?
-		pin = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as? MKPinAnnotationView
-		if pin == nil {
-			pin = MKPinAnnotationView(annotation: studentAnnotation, reuseIdentifier: "pin")
+		var mapPin = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as? MKPinAnnotationView
+		if mapPin != nil {
+			mapPin!.annotation = studentAnnotation
+		} else {
+			mapPin = MKPinAnnotationView(annotation: studentAnnotation, reuseIdentifier: "pin")
+			if let pin = mapPin {
+				pin.canShowCallout = true
+				pin.animatesDrop = true
+				let button = UIButton(type: .DetailDisclosure)
+				button.userInteractionEnabled = false
+				pin.rightCalloutAccessoryView = button
+			}
 		}
 
-		guard let mapPin = pin else {
+		guard let pin = mapPin else {
 			return nil
 		}
-		mapPin.annotation = studentAnnotation
-		mapPin.canShowCallout = true
-		mapPin.animatesDrop = true
-		let dateString = DateFormatter.sharedInstance.localizedDateString(studentAnnotation.date)
-		mapPin.detailCalloutAccessoryView = DetailCallout(labelTexts: [studentAnnotation.subtitle!, dateString])
 
-		// Recent pins will be bright red, older ones faded red:
+		// Add custom detail view
+		let dateString = DateFormatter.sharedInstance.localizedDateString(studentAnnotation.date)
+		pin.detailCalloutAccessoryView = DetailCallout(labelTexts: [studentAnnotation.subtitle!, dateString])
+
+		// Recent pins will be bright red, older ones faded out a bit:
 		let fade = (1 - recentness) / 1.5
-		mapPin.pinTintColor = UIColor(red: 1, green: fade, blue: fade, alpha: 1)
-		return mapPin
+		pin.pinTintColor = UIColor(red: 1, green: fade, blue: fade, alpha: 1)
+		return pin
+	}
+
+	func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+		view.addGestureRecognizer(
+			UITapGestureRecognizer(target: self, action: "annotationViewTapped:")
+		)
+	}
+
+	func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+		removeTapGestureRecognizers(view)
 	}
 }
 
+// MARK: annotation callout view selected / deselected handlers
+extension MapViewController {
+
+	/**
+	Trigger the opening of the URL contained in the StudentAnnotation.
+	*/
+	func annotationViewTapped(sender: UITapGestureRecognizer) {
+		if let view = sender.view as? MKAnnotationView where view.selected == true, let annotation = view.annotation as? StudentAnnotation {
+			on_main_queue() {
+				if !self.openAnnotationURL(annotation) {
+					// Opening failed because there is no valid URL.  No need to try again if user taps again.
+					self.removeTapGestureRecognizers(view)
+				}
+			}
+		}
+	}
+
+	/**
+	Remove all tap gesture recognizers from the provided view.
+	*/
+	func removeTapGestureRecognizers(view: MKAnnotationView) {
+		if let gestureRecognizers = view.gestureRecognizers {
+			for recognizer in gestureRecognizers {
+				if let tapRecognizer = recognizer as? UITapGestureRecognizer {
+					view.removeGestureRecognizer(tapRecognizer)
+				}
+			}
+		}
+	}
+
+	/**
+	Tries to open the URL present in the annotation.
+	*/
+	func openAnnotationURL(annotation: StudentAnnotation) -> Bool {
+		guard let urlString = annotation.subtitle, url = extractValidHTTPURL(urlString) else {
+			print("Missing or invalid URL, not opening: \"\(annotation.subtitle)\"")
+			return false
+		}
+		if !UIApplication.sharedApplication().openURL(url) {
+			print("Failed to launch safari with url: \(url)")
+			return false
+		}
+		return true
+	}
+
+	/**
+	Try to extract a valid URL from the given string.  If no protocol is present
+	in the given string, it will be prefixed with http://.
+
+	Note that this may return a url that is not valid in a particular environment,
+	but that could be a valid URL in some environments.  For example,
+	http://foo is a valid URL, and could actually resolve to a valid resource,
+	but for most people it will not.
+	*/
+	func extractValidHTTPURL(URLString: String) -> NSURL? {
+		guard URLString.characters.count > 0 else {
+			return nil
+		}
+		var url: NSURL?
+		url = NSURL(string: URLString)
+
+		if url == nil || url!.scheme == "" {
+			// Make an effort to create a valid URL, assuming http protocol:
+			url = NSURL(string: "http://" + URLString)
+		}
+
+		guard let validURL = url where validURL.host != nil && (validURL.scheme == "http" || validURL.scheme == "https") else {
+			return nil
+		}
+
+		return validURL
+	}
+}
