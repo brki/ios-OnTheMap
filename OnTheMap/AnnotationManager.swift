@@ -21,12 +21,6 @@ class AnnotationManager {
 		}
 		annotations = newAnnotations
 	}
-}
-
-
-// MARK: StudentInformation-aware methods
-
-extension AnnotationManager {
 
 	/**
 	Update annotations with the given array of StudentInformation values.

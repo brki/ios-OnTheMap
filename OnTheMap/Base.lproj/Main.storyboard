@@ -86,13 +86,40 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="et3-EY-1Am">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="studentCell" id="et3-EY-1Am">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="et3-EY-1Am" id="2u4-H4-cON">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="533" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WF5-Sz-CA1">
+                                            <rect key="frame" x="12" y="11" width="22" height="22"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="OTF-Fn-6iM"/>
+                                            </constraints>
+                                            <state key="normal" image="MapMarker"/>
+                                            <connections>
+                                                <action selector="mapButtonTapped:" destination="w43-Ew-awJ" eventType="touchUpInside" id="E9y-9r-eUf"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2X-Zm-MwP">
+                                            <rect key="frame" x="44" y="11" width="481" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="h2X-Zm-MwP" firstAttribute="centerY" secondItem="2u4-H4-cON" secondAttribute="centerY" id="6Ub-Cf-pPX"/>
+                                        <constraint firstItem="WF5-Sz-CA1" firstAttribute="centerY" secondItem="2u4-H4-cON" secondAttribute="centerY" id="Fd4-18-hn1"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="h2X-Zm-MwP" secondAttribute="trailing" id="ciC-4n-qg4"/>
+                                        <constraint firstItem="WF5-Sz-CA1" firstAttribute="leading" secondItem="2u4-H4-cON" secondAttribute="leadingMargin" constant="4" id="n6R-Hp-dPI"/>
+                                        <constraint firstItem="h2X-Zm-MwP" firstAttribute="leading" secondItem="WF5-Sz-CA1" secondAttribute="trailing" constant="10" id="qka-Vs-aGp"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
@@ -105,13 +132,24 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="On The Map" id="3aL-fl-Got">
                         <barButtonItem key="backBarButtonItem" title="Logout" id="gRp-sQ-LXf"/>
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="7aO-SH-71U"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="7aO-SH-71U">
+                            <connections>
+                                <action selector="logout:" destination="w43-Ew-awJ" id="ssj-Vt-3Qb"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="9kN-5K-e0t"/>
+                            <barButtonItem systemItem="refresh" id="9kN-5K-e0t">
+                                <connections>
+                                    <action selector="refreshButtonTapped:" destination="w43-Ew-awJ" id="1Qm-SX-u7e"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="MapMarker" id="cnH-dd-8vI" userLabel="MapMarker"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="r4o-hk-N6U" id="1a9-DV-viC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cn2-z1-5bt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

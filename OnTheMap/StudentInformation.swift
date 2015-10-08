@@ -21,6 +21,8 @@ struct StudentInformation {
 	let createdAt: NSDate
 	let updatedAt: NSDate
 
+	var fullName: String { return "\(firstName) \(lastName)" }
+
 	init?(values: [String: AnyObject]) {
 		let helper = JSONHelper(values: values)
 		objectId  = helper.string("objectId") ?? ""

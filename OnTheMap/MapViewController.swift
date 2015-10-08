@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
 	@IBOutlet weak var refreshButton: UIBarButtonItem!
 
 	var parse = ParseClient.sharedInstance
+	var autoOpenAnnotationId: String?
 	var annotationManager: AnnotationManager!
 
 	override func viewDidLoad() {
@@ -27,7 +28,9 @@ class MapViewController: UIViewController {
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		updateStudentAnnotations(foreceRefresh: false)
+		updateStudentAnnotations(foreceRefresh: false) { updated in
+			self.autoOpenAnnotation()
+		}
 	}
 
 	deinit {
@@ -36,13 +39,7 @@ class MapViewController: UIViewController {
 
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-
-	}
-
-	override func didReceiveMemoryWarning() {
-		// TODO: anything to do here?  Throwing away studentInfos perhaps not worth it.
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+		autoOpenAnnotation()
 	}
 
 	@IBAction func logout(sender: UIBarButtonItem) {
@@ -62,18 +59,36 @@ class MapViewController: UIViewController {
 	}
 
 	/**
+	If found, open
+	*/
+	func autoOpenAnnotation() {
+		guard let annotationId = autoOpenAnnotationId else {
+			return
+		}
+		autoOpenAnnotationId = nil
+		for annotation in mapView.annotations {
+			if let studentAnnotation = annotation as? StudentAnnotation where studentAnnotation.uniqueStringId == annotationId {
+				mapView.selectAnnotation(studentAnnotation, animated: true)
+			}
+		}
+	}
+
+	/**
 	Updates the student annotations.
 	
 	:param: forceRefresh If true, the StudentInformation structures will be downloaded again.  If false, they will only be downloaded if none have
 	        already been downloaded.
 	*/
-	func updateStudentAnnotations(foreceRefresh forceRefresh: Bool = true) {
+	func updateStudentAnnotations(foreceRefresh forceRefresh: Bool = true, postUpdateHandler: ((updated: Bool) -> Void)? = nil) {
 
 		func handleStudentInfos(studentInfos: [StudentInformation]?, error: NSError?) {
 			on_main_queue {
 				self.refreshButton.enabled = true
 			}
 			guard let infos = studentInfos else {
+				if let handler = postUpdateHandler {
+					handler(updated: false)
+				}
 				on_main_queue {
 					self.showAlert("Unable to update locations", message: error?.localizedDescription ?? "Unknown error")
 				}
@@ -89,6 +104,9 @@ class MapViewController: UIViewController {
 					on_main_queue {
 						self.mapView.addAnnotations(added as [MKAnnotation])
 					}
+				}
+				if let handler = postUpdateHandler {
+					handler(updated: false)
 				}
 			}
 		}
@@ -107,8 +125,6 @@ class MapViewController: UIViewController {
 		alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
 		presentViewController(alertController, animated: true, completion: nil)
 	}
-
-
 }
 
 // MARK: MKMapViewDelegate methods
@@ -158,6 +174,7 @@ extension MapViewController: MKMapViewDelegate {
 }
 
 // MARK: annotation callout view selected / deselected handlers
+
 extension MapViewController {
 
 	/**
@@ -196,37 +213,9 @@ extension MapViewController {
 			return false
 		}
 		if !UIApplication.sharedApplication().openURL(url) {
-			print("Failed to launch safari with url: \(url)")
+			print("Failed to launch Safari with url: \(url)")
 			return false
 		}
 		return true
-	}
-
-	/**
-	Try to extract a valid URL from the given string.  If no protocol is present
-	in the given string, it will be prefixed with http://.
-
-	Note that this may return a url that is not valid in a particular environment,
-	but that could be a valid URL in some environments.  For example,
-	http://foo is a valid URL, and could actually resolve to a valid resource,
-	but for most people it will not.
-	*/
-	func extractValidHTTPURL(URLString: String) -> NSURL? {
-		guard URLString.characters.count > 0 else {
-			return nil
-		}
-		var url: NSURL?
-		url = NSURL(string: URLString)
-
-		if url == nil || url!.scheme == "" {
-			// Make an effort to create a valid URL, assuming http protocol:
-			url = NSURL(string: "http://" + URLString)
-		}
-
-		guard let validURL = url where validURL.host != nil && (validURL.scheme == "http" || validURL.scheme == "https") else {
-			return nil
-		}
-
-		return validURL
 	}
 }
