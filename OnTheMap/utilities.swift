@@ -17,7 +17,7 @@ Note that this fails for some potentially valid URL names.  For example,
 your DNS server might provide you an IP address for http://foobar .
 
 This method, written for the Udacity ios networking course, assumes
-that a valid hostname with a toplevel domain (e.g. foo.com).
+that a valid hostname with a toplevel domain (e.g. foo.com) is required.
 */
 func extractValidHTTPURL(URLString: String) -> NSURL? {
 	guard URLString.characters.count > 3 else {
