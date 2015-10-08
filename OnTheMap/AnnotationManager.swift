@@ -10,8 +10,6 @@ import Foundation
 import MapKit
 
 class AnnotationManager {
-	static let sharedInstance = AnnotationManager()
-
 	var annotations = Set<StudentAnnotation>()
 
 	func updateAnnotations(newAnnotations: Set<StudentAnnotation>, changeHandler: ((added: [StudentAnnotation], removed: [StudentAnnotation]) -> Void)? = nil) {

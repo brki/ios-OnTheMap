@@ -15,10 +15,12 @@ class MapViewController: UIViewController {
 	@IBOutlet weak var refreshButton: UIBarButtonItem!
 
 	var parse = ParseClient.sharedInstance
+	var annotationManager: AnnotationManager!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		mapView.delegate = self
+		annotationManager = AnnotationManager()
 		// TODO perhaps: try to get user's most recent coordinates and set initial map region to a fairly large region
 		//		mapView.region = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
 	}
@@ -77,7 +79,7 @@ class MapViewController: UIViewController {
 				}
 				return
 			}
-			AnnotationManager.sharedInstance.updateAnnotationsWithStudentInformation(infos) { added, removed in
+			annotationManager.updateAnnotationsWithStudentInformation(infos) { added, removed in
 				if removed.count > 0 {
 					on_main_queue {
 						self.mapView.removeAnnotations(removed as [MKAnnotation])
