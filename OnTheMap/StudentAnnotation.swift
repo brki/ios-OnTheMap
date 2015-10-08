@@ -28,7 +28,7 @@ class StudentAnnotation: NSObject, MKAnnotation {
 		self.recentness = recentness
 		self.uniqueStringId = info.objectId
 
-		self.title = "\(info.firstName) \(info.lastName)"
+		self.title = info.fullName
 		self.subtitle = info.mediaURL
 		self.coordinate = CLLocationCoordinate2D(latitude: Double(info.latitude), longitude: Double(info.longitude))
 	}
