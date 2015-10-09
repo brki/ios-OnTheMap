@@ -59,7 +59,7 @@ class MapViewController: UIViewController {
 	}
 
 	/**
-	If found, open
+	Open the annotation that has the uniqueStringId == self.autoOpenAnnotationId.
 	*/
 	func autoOpenAnnotation() {
 		guard let annotationId = autoOpenAnnotationId else {
@@ -76,8 +76,10 @@ class MapViewController: UIViewController {
 	/**
 	Updates the student annotations.
 	
-	:param: forceRefresh If true, the StudentInformation structures will be downloaded again.  If false, they will only be downloaded if none have
-	        already been downloaded.
+	:param: forceRefresh If true, the StudentInformation structures will be downloaded again.  If false, they will only be
+			downloaded if none have already been downloaded.
+	:param: postUpdateHandler handler to call after the annotation refresh fails or succeeds.  It ``updated`` parameter will
+	        be set to true if the annotation refresh suceeded.
 	*/
 	func updateStudentAnnotations(foreceRefresh forceRefresh: Bool = true, postUpdateHandler: ((updated: Bool) -> Void)? = nil) {
 

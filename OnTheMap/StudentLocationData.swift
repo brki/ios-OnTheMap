@@ -12,7 +12,7 @@ protocol ReusableCellProviding: class {
 	func cellForStudentLocation(location: StudentInformation) -> UITableViewCell
 }
 
-class StudentLocationData: NSObject, UITableViewDataSource {
+class StudentLocationData: NSObject {
 
 	var studentInfos = [StudentInformation]()
 	let parse = ParseClient.sharedInstance
@@ -20,15 +20,6 @@ class StudentLocationData: NSObject, UITableViewDataSource {
 
 	init(cellProvider: ReusableCellProviding) {
 		self.cellProvider = cellProvider
-	}
-
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let info = studentInfos[indexPath.row]
-		return cellProvider.cellForStudentLocation(info)
-	}
-
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return studentInfos.count
 	}
 
 	func fetchStudentInfos(forceRefresh forceRefresh: Bool = true, handler: (success: Bool, error: NSError?) -> Void) {
@@ -48,5 +39,18 @@ class StudentLocationData: NSObject, UITableViewDataSource {
 			parse.studentInfos(handleStudentLocations)
 		}
 	}
+}
 
+// MARK: UITableViewDataSource methods
+
+extension StudentLocationData: UITableViewDataSource {
+
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let info = studentInfos[indexPath.row]
+		return cellProvider.cellForStudentLocation(info)
+	}
+
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return studentInfos.count
+	}
 }

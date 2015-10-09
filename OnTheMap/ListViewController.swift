@@ -112,5 +112,3 @@ extension ListViewController: ReusableCellProviding {
 		return cell
 	}
 }
-
-
