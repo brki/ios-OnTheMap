@@ -14,7 +14,6 @@ class MapViewController: UIViewController {
 	@IBOutlet weak var mapView: MKMapView!
 	@IBOutlet weak var refreshButton: UIBarButtonItem!
 
-	var parse = ParseClient.sharedInstance
 	var autoOpenAnnotationId: String?
 	var annotationManager: AnnotationManager!
 
@@ -28,7 +27,7 @@ class MapViewController: UIViewController {
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		updateStudentAnnotations(foreceRefresh: false) { updated in
+		refreshStudentAnnotations(foreceRefresh: false) { updated in
 			self.autoOpenAnnotation()
 		}
 	}
@@ -44,18 +43,20 @@ class MapViewController: UIViewController {
 
 	@IBAction func logout(sender: UIBarButtonItem) {
 		UdacityClient.sharedInstance.logout() { result, error in
+			guard error == nil else {
+				self.showAlert("Logout error", message: error!.localizedDescription)
+				return
+			}
 			on_main_queue {
-				guard error == nil else {
-					self.showAlert("Logout error", message: error!.localizedDescription)
-					return
-				}
+				// TODO: cleanup data on logout
+
 				self.dismissViewControllerAnimated(true, completion: nil)
 			}
 		}
 	}
 
 	@IBAction func refreshStudentLocations(sender: AnyObject? = nil) {
-		updateStudentAnnotations()
+		refreshStudentAnnotations()
 	}
 
 	/**
@@ -74,58 +75,45 @@ class MapViewController: UIViewController {
 	}
 
 	/**
-	Updates the student annotations.
+	Ensures the lateste student annotations are display
 	
 	:param: forceRefresh If true, the StudentInformation structures will be downloaded again.  If false, they will only be
 			downloaded if none have already been downloaded.
 	:param: postUpdateHandler handler to call after the annotation refresh fails or succeeds.  It ``updated`` parameter will
 	        be set to true if the annotation refresh suceeded.
 	*/
-	func updateStudentAnnotations(foreceRefresh forceRefresh: Bool = true, postUpdateHandler: ((updated: Bool) -> Void)? = nil) {
-
-		func handleStudentInfos(studentInfos: [StudentInformation]?, error: NSError?) {
-			on_main_queue {
+	func refreshStudentAnnotations(foreceRefresh forceRefresh: Bool = true, postUpdateHandler: ((updated: Bool) -> Void)? = nil) {
+		refreshButton.enabled = false
+		annotationManager.updateStudentAnnotations(foreceRefresh: forceRefresh) { addedLocations, removedLocations, error in
+			guard let added = addedLocations, removed = removedLocations where error == nil else {
+				self.showAlert("Unable to update locations", message: error?.localizedDescription ?? "Unknown error")
+				postUpdateHandler?(updated: false)
 				self.refreshButton.enabled = true
-			}
-			guard let infos = studentInfos else {
-				if let handler = postUpdateHandler {
-					handler(updated: false)
-				}
-				on_main_queue {
-					self.showAlert("Unable to update locations", message: error?.localizedDescription ?? "Unknown error")
-				}
 				return
 			}
-			annotationManager.updateAnnotationsWithStudentInformation(infos) { added, removed in
+			on_main_queue {
 				if removed.count > 0 {
-					on_main_queue {
-						self.mapView.removeAnnotations(removed as [MKAnnotation])
-					}
+					self.mapView.removeAnnotations(removed as [MKAnnotation])
 				}
 				if added.count > 0 {
-					on_main_queue {
-						self.mapView.addAnnotations(added as [MKAnnotation])
-					}
+					self.mapView.addAnnotations(added as [MKAnnotation])
 				}
-				if let handler = postUpdateHandler {
-					handler(updated: false)
-				}
+				self.refreshButton.enabled = true
 			}
-		}
-
-		refreshButton.enabled = false
-
-		if forceRefresh {
-			parse.latestStudentInfos(handleStudentInfos)
-		} else {
-			parse.studentInfos(handleStudentInfos)
+			postUpdateHandler?(updated: true)
 		}
 	}
 
-	func showAlert(title: String?, message: String?) {
+	func showAlert(title: String?, message: String?, addToMainQueue: Bool? = true) {
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
 		alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-		presentViewController(alertController, animated: true, completion: nil)
+		if let main = addToMainQueue where main == true {
+			on_main_queue {
+				self.presentViewController(alertController, animated: true, completion: nil)
+			}
+		} else {
+			presentViewController(alertController, animated: true, completion: nil)
+		}
 	}
 }
 

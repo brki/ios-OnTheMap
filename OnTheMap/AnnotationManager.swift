@@ -9,28 +9,40 @@
 import Foundation
 import MapKit
 
-class AnnotationManager {
-	var annotations = Set<StudentAnnotation>()
-
-	func updateAnnotations(newAnnotations: Set<StudentAnnotation>, changeHandler: ((added: [StudentAnnotation], removed: [StudentAnnotation]) -> Void)? = nil) {
-		if let handler = changeHandler {
-			handler(
-				added: Array(newAnnotations.subtract(annotations)),
-				removed: Array(annotations.subtract(newAnnotations))
-			)
-		}
-		annotations = newAnnotations
-	}
+struct AnnotationManager {
 
 	/**
-	Update annotations with the given array of StudentInformation values.
+	A reference is kept to the last-fetched annotations so that a difference can be calculated the next time the annotations
+	are updated.
 	*/
-	func updateAnnotationsWithStudentInformation(infos: [StudentInformation], changeHandler: ((added: [StudentAnnotation], removed: [StudentAnnotation]) -> Void)? = nil) {
-		var annotations = Set<StudentAnnotation>()
-		let infoCount = Float(infos.count)
-		for (i, info) in infos.enumerate() {
-			annotations.insert(StudentAnnotation(info: info, recentness: 1 - Float(i) / infoCount))
+	var annotations = Set<StudentAnnotation>()
+	let dataStore = (UIApplication.sharedApplication().delegate as! AppDelegate).dataStore
+
+	mutating func updateStudentAnnotations(foreceRefresh forceRefresh: Bool = true, changeHandler: ((added: [StudentAnnotation]?, removed: [StudentAnnotation]?, error: NSError?) -> Void)?){
+
+		dataStore.fetchStudentLocations(forceRefresh) { locations, error in
+			if let err = error {
+				changeHandler?(added: nil, removed: nil, error: err)
+				return
+			}
+			guard let newLocations = locations else {
+				let err = NSError(domain: "AnnotationManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "Unable to refresh locations"])
+				changeHandler?(added: nil, removed: nil, error: err)
+				return
+			}
+
+			var newAnnotations = Set<StudentAnnotation>()
+			let locationCount = Float(newLocations.count)
+			for (i, location) in newLocations.enumerate() {
+				newAnnotations.insert(StudentAnnotation(info: location, recentness: 1 - Float(i) / locationCount))
+			}
+
+			changeHandler?(
+				added: Array(newAnnotations.subtract(self.annotations)),
+				removed: Array(self.annotations.subtract(newAnnotations)),
+				error: nil
+			)
+			self.annotations = newAnnotations
 		}
-		updateAnnotations(annotations, changeHandler: changeHandler)
 	}
 }
