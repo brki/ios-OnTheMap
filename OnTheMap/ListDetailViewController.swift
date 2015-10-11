@@ -11,8 +11,9 @@ import UIKit
 class ListDetailViewController: UIViewController {
 
 	@IBOutlet weak var name: UILabel!
-	@IBOutlet weak var URL: UILabel!
 	@IBOutlet weak var mapString: UILabel!
+	@IBOutlet weak var when: UILabel!
+	@IBOutlet weak var URL: UIButton!
 
 	var studentInformation: StudentInformation?
 
@@ -24,8 +25,12 @@ class ListDetailViewController: UIViewController {
 
 		if let info = studentInformation {
 			name.text = info.fullName
-			URL.text = info.mediaURL
 			mapString.text = info.mapString
+			when.text = DateFormatter.sharedInstance.localizedDateString(info.updatedAt)
+			URL.setTitle(info.mediaURL, forState: .Normal)
+			if extractValidHTTPURL(info.mediaURL) == nil {
+				URL.enabled = false
+			}
 		}
 	}
 
@@ -40,5 +45,16 @@ class ListDetailViewController: UIViewController {
 			mapVC.autoOpenAnnotationId = info.objectId
 			tabController.selectedIndex = 0
 		}
+	}
+
+	/**
+	Tries to open the URL if it appears to be valid.
+	*/
+	@IBAction func openURL(sender: AnyObject) {
+		guard let info = studentInformation, url = extractValidHTTPURL(info.mediaURL) else {
+			print("Missing or invalid URL, not opening URL.")
+			return
+		}
+		UIApplication.sharedApplication().openURL(url)
 	}
 }
