@@ -28,26 +28,6 @@ class ListViewController: UIViewController {
 		refreshStudentLocations(forceRefresh: false)
 	}
 
-	/**
-	Show the related annotation in the map view tab.
-	*/
-	@IBAction func mapButtonTapped(sender: UIButton) {
-		let buttonPosition = sender.convertPoint(CGPointZero, toView: tableView)
-		if let indexPath = tableView.indexPathForRowAtPoint(buttonPosition), tabController = tabBarController {
-
-			guard let studentInfo = tableData.locations?[indexPath.row] else {
-				print("mapButtonTapped: no location data available")
-				return
-			}
-			guard let navVC = tabController.viewControllers?[0] as? UINavigationController, mapVC = navVC.viewControllers[0] as? MapViewController else {
-				print("mapButtonTapped: not able to get reference to MapViewController")
-				return
-			}
-			mapVC.autoOpenAnnotationId = studentInfo.objectId
-			tabController.selectedIndex = 0
-		}
-	}
-
 	@IBAction func refreshButtonTapped(sender: AnyObject) {
 		refreshStudentLocations(forceRefresh: true)
 	}
@@ -66,7 +46,6 @@ class ListViewController: UIViewController {
 	}
 
 	func refreshStudentLocations(forceRefresh forceRefresh: Bool = false) {
-
 		tableData.dataStore.fetchStudentLocations(forceRefresh) { locations, error in
 			guard error == nil && locations != nil else {
 				self.showAlert("Unable to update locations", message: error?.localizedDescription ?? "Unknown error")

@@ -93,26 +93,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="533" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WF5-Sz-CA1">
-                                            <rect key="frame" x="12" y="11" width="22" height="22"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="22" id="OTF-Fn-6iM"/>
-                                            </constraints>
-                                            <state key="normal" image="MapMarker"/>
-                                            <connections>
-                                                <action selector="mapButtonTapped:" destination="w43-Ew-awJ" eventType="touchUpInside" id="E9y-9r-eUf"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="First Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2X-Zm-MwP" userLabel="Name">
-                                            <rect key="frame" x="44" y="12" width="71" height="20"/>
+                                            <rect key="frame" x="8" y="12" width="71" height="20"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foobar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwc-yg-FzY" userLabel="mapString">
-                                            <rect key="frame" x="123" y="13" width="402" height="17"/>
+                                            <rect key="frame" x="87" y="13" width="438" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" red="0.48411828279495239" green="0.48410379886627197" blue="0.48411202430725098" alpha="1" colorSpace="calibratedRGB"/>
@@ -122,10 +111,8 @@
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="h2X-Zm-MwP" firstAttribute="centerY" secondItem="2u4-H4-cON" secondAttribute="centerY" id="6Ub-Cf-pPX"/>
-                                        <constraint firstItem="WF5-Sz-CA1" firstAttribute="centerY" secondItem="2u4-H4-cON" secondAttribute="centerY" id="Fd4-18-hn1"/>
+                                        <constraint firstItem="h2X-Zm-MwP" firstAttribute="leading" secondItem="2u4-H4-cON" secondAttribute="leadingMargin" id="ERU-g4-fYB"/>
                                         <constraint firstItem="Kwc-yg-FzY" firstAttribute="leading" secondItem="h2X-Zm-MwP" secondAttribute="trailing" constant="8" id="f5T-bB-r1H"/>
-                                        <constraint firstItem="WF5-Sz-CA1" firstAttribute="leading" secondItem="2u4-H4-cON" secondAttribute="leadingMargin" constant="4" id="n6R-Hp-dPI"/>
-                                        <constraint firstItem="h2X-Zm-MwP" firstAttribute="leading" secondItem="WF5-Sz-CA1" secondAttribute="trailing" constant="10" id="qka-Vs-aGp"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Kwc-yg-FzY" secondAttribute="trailing" id="xep-1j-7H0"/>
                                         <constraint firstItem="Kwc-yg-FzY" firstAttribute="centerY" secondItem="2u4-H4-cON" secondAttribute="centerY" id="yXq-1V-eir"/>
                                     </constraints>
