@@ -14,7 +14,8 @@ class ListViewController: UIViewController {
 	var tableData: StudentLocationTableData!
 
 	let CELL_BUTTON_TAG = 1
-	let CELL_LABEL_TAG = 2
+	let CELL_NAME_TAG = 2
+	let CELL_PLACE_NAME_TAG = 3
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -32,18 +33,18 @@ class ListViewController: UIViewController {
 	*/
 	@IBAction func mapButtonTapped(sender: UIButton) {
 		let buttonPosition = sender.convertPoint(CGPointZero, toView: tableView)
-		if let indexPath = tableView.indexPathForRowAtPoint(buttonPosition), tbController = tabBarController {
+		if let indexPath = tableView.indexPathForRowAtPoint(buttonPosition), tabController = tabBarController {
 
 			guard let studentInfo = tableData.locations?[indexPath.row] else {
 				print("mapButtonTapped: no location data available")
 				return
 			}
-			guard let navVC = tbController.viewControllers?[0] as? UINavigationController, mapVC = navVC.viewControllers[0] as? MapViewController else {
+			guard let navVC = tabController.viewControllers?[0] as? UINavigationController, mapVC = navVC.viewControllers[0] as? MapViewController else {
 				print("mapButtonTapped: not able to get reference to MapViewController")
 				return
 			}
 			mapVC.autoOpenAnnotationId = studentInfo.objectId
-			tbController.selectedIndex = 0
+			tabController.selectedIndex = 0
 		}
 	}
 
@@ -105,14 +106,20 @@ class ListViewController: UIViewController {
 	}
 }
 
-// MARK UITableViewDelegate methods
+// MARK: UITableViewDelegate methods
+
 extension ListViewController: UITableViewDelegate {
+
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		guard let studentInfo = tableData.locations?[indexPath.row] else {
 			print("tableView(_:didSelectRowAtIndexPath): no location data available")
 			return
 		}
 		openURL(studentInfo.mediaURL)
+	}
+
+	func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+		performSegueWithIdentifier("ListToDetail", sender: indexPath)
 	}
 }
 
@@ -122,7 +129,28 @@ extension ListViewController: ReusableCellProviding {
 
 	func cellForStudentLocation(location: StudentInformation) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("studentCell")!
-		(cell.viewWithTag(CELL_LABEL_TAG) as! UILabel).text = location.fullName
+		(cell.viewWithTag(CELL_NAME_TAG) as! UILabel).text = location.fullName
+		(cell.viewWithTag(CELL_PLACE_NAME_TAG) as! UILabel).text = location.mapString
 		return cell
+	}
+}
+
+// MARK: Segues
+
+extension ListViewController {
+
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "ListToDetail" {
+			guard let indexPath = sender as? NSIndexPath else {
+				print("listToDetail expects sender to be an indexPath")
+				return
+			}
+			guard let studentInfo = tableData.locations?[indexPath.row] else {
+				print("segue listToDetail: no location data available")
+				return
+			}
+			let detailVC = segue.destinationViewController as! ListDetailViewController
+			detailVC.studentInformation = studentInfo
+		}
 	}
 }

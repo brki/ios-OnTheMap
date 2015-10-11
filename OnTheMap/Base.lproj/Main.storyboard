@@ -76,7 +76,7 @@
             </objects>
             <point key="canvasLocation" x="2037" y="362"/>
         </scene>
-        <!--On The Map-->
+        <!--Locations-->
         <scene sceneID="9v9-F5-VIW">
             <objects>
                 <tableViewController id="w43-Ew-awJ" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,11 +104,18 @@
                                                 <action selector="mapButtonTapped:" destination="w43-Ew-awJ" eventType="touchUpInside" id="E9y-9r-eUf"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2X-Zm-MwP">
-                                            <rect key="frame" x="44" y="11" width="481" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="First Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2X-Zm-MwP" userLabel="Name">
+                                            <rect key="frame" x="44" y="12" width="71" height="20"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foobar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwc-yg-FzY" userLabel="mapString">
+                                            <rect key="frame" x="123" y="13" width="402" height="17"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" red="0.48411828279495239" green="0.48410379886627197" blue="0.48411202430725098" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -116,9 +123,11 @@
                                     <constraints>
                                         <constraint firstItem="h2X-Zm-MwP" firstAttribute="centerY" secondItem="2u4-H4-cON" secondAttribute="centerY" id="6Ub-Cf-pPX"/>
                                         <constraint firstItem="WF5-Sz-CA1" firstAttribute="centerY" secondItem="2u4-H4-cON" secondAttribute="centerY" id="Fd4-18-hn1"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="h2X-Zm-MwP" secondAttribute="trailing" id="ciC-4n-qg4"/>
+                                        <constraint firstItem="Kwc-yg-FzY" firstAttribute="leading" secondItem="h2X-Zm-MwP" secondAttribute="trailing" constant="8" id="f5T-bB-r1H"/>
                                         <constraint firstItem="WF5-Sz-CA1" firstAttribute="leading" secondItem="2u4-H4-cON" secondAttribute="leadingMargin" constant="4" id="n6R-Hp-dPI"/>
                                         <constraint firstItem="h2X-Zm-MwP" firstAttribute="leading" secondItem="WF5-Sz-CA1" secondAttribute="trailing" constant="10" id="qka-Vs-aGp"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Kwc-yg-FzY" secondAttribute="trailing" id="xep-1j-7H0"/>
+                                        <constraint firstItem="Kwc-yg-FzY" firstAttribute="centerY" secondItem="2u4-H4-cON" secondAttribute="centerY" id="yXq-1V-eir"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -130,8 +139,8 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="On The Map" id="3aL-fl-Got">
-                        <barButtonItem key="backBarButtonItem" title="Logout" id="gRp-sQ-LXf"/>
+                    <navigationItem key="navigationItem" title="Locations" id="3aL-fl-Got">
+                        <barButtonItem key="backBarButtonItem" title="Locations" id="gRp-sQ-LXf"/>
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="7aO-SH-71U">
                             <connections>
                                 <action selector="logout:" destination="w43-Ew-awJ" id="ssj-Vt-3Qb"/>
@@ -149,11 +158,117 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="r4o-hk-N6U" id="1a9-DV-viC"/>
+                        <segue destination="Fhh-r8-wOj" kind="show" identifier="ListToDetail" id="8Y9-mV-9vX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cn2-z1-5bt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2037" y="-355"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="4xK-z2-W9d">
+            <objects>
+                <viewController id="Fhh-r8-wOj" customClass="ListDetailViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="spD-tN-V3I"/>
+                        <viewControllerLayoutGuide type="bottom" id="LG7-QC-4Z7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hVI-qH-Bv9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qlx-b1-iA1">
+                                <rect key="frame" x="256" y="254" width="360000000098" height="1080000000050"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="inO-kU-36Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="360000000098" height="1080000000008"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1GD-3D-1A3" userLabel="Labels">
+                                                <rect key="frame" x="0.0" y="0.0" width="89" height="1080000000008"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJh-pH-VSU">
+                                                        <rect key="frame" x="39" y="0.0" width="50" height="21"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toH-oZ-DIo" userLabel="URL:">
+                                                        <rect key="frame" x="52" y="539999999994" width="37" height="21"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Map String:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWO-fL-jfp">
+                                                        <rect key="frame" x="0.0" y="1079999999987" width="89" height="21"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <animations/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-3p-7B9" userLabel="Values">
+                                                <rect key="frame" x="97" y="0.0" width="360000000001" height="1080000000008"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-9a-AUz" userLabel="Name">
+                                                        <rect key="frame" x="0.0" y="0.0" width="360000000001" height="360000000000"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC3-0i-5aM" userLabel="URL">
+                                                        <rect key="frame" x="0.0" y="359999999725" width="360000000001" height="360000000000"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZZ-R1-mD7" userLabel="Map String">
+                                                        <rect key="frame" x="0.0" y="720000000008" width="360000000001" height="360000000000"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <animations/>
+                                            </stackView>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNZ-C4-mnl">
+                                        <rect key="frame" x="0.0" y="1080000000020" width="360000000098" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="See on map"/>
+                                        <connections>
+                                            <action selector="seeOnMap:" destination="Fhh-r8-wOj" eventType="touchUpInside" id="1OC-i4-whP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                            </stackView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qlx-b1-iA1" firstAttribute="centerY" secondItem="hVI-qH-Bv9" secondAttribute="centerY" id="0lX-2Z-uew"/>
+                            <constraint firstItem="qlx-b1-iA1" firstAttribute="centerX" secondItem="hVI-qH-Bv9" secondAttribute="centerX" id="mfW-UC-tvQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail" id="fev-96-kUD"/>
+                    <connections>
+                        <outlet property="URL" destination="nC3-0i-5aM" id="eZQ-CD-mQO"/>
+                        <outlet property="mapString" destination="qZZ-R1-mD7" id="Kjp-8t-vaz"/>
+                        <outlet property="name" destination="pv1-9a-AUz" id="N1n-l7-eM3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pu0-PU-1NH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2724" y="-355"/>
         </scene>
         <!--On The Map List-->
         <scene sceneID="TV7-c7-P5Z">
