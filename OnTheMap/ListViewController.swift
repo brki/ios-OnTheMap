@@ -59,8 +59,8 @@ class ListViewController: UIViewController {
 				return
 			}
 			on_main_queue {
-				// TODO: cleanup data on logout
 				self.dismissViewControllerAnimated(true, completion: nil)
+				(UIApplication.sharedApplication().delegate as! AppDelegate).onLogout()
 			}
 		}
 	}
