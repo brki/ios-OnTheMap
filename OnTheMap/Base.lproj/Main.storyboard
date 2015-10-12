@@ -168,35 +168,47 @@
                                 <rect key="frame" x="200" y="220" width="200" height="160"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="inO-kU-36Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="118"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="138"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1GD-3D-1A3" userLabel="Labels">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="118"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1GD-3D-1A3" userLabel="Labels">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="138"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Name:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJh-pH-VSU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="33"/>
                                                         <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="63y-Ta-0IC"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Where:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWO-fL-jfp">
-                                                        <rect key="frame" x="0.0" y="32" width="50" height="21"/>
+                                                        <rect key="frame" x="0.0" y="35" width="50" height="33"/>
                                                         <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="6Hf-yt-shI"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="When:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXP-I7-NUz">
-                                                        <rect key="frame" x="0.0" y="65" width="50" height="21"/>
+                                                        <rect key="frame" x="0.0" y="70" width="50" height="33"/>
                                                         <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="jpy-le-axJ"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toH-oZ-DIo" userLabel="URL:">
-                                                        <rect key="frame" x="13" y="97" width="37" height="21"/>
+                                                        <rect key="frame" x="13" y="105" width="37" height="33"/>
                                                         <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="uMF-j1-yp4"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
@@ -204,33 +216,45 @@
                                                 </subviews>
                                                 <animations/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-3p-7B9" userLabel="Values">
-                                                <rect key="frame" x="58" y="0.0" width="142" height="118"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-3p-7B9" userLabel="Values">
+                                                <rect key="frame" x="58" y="0.0" width="142" height="138"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-9a-AUz" userLabel="Name">
-                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="0.0"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-9a-AUz" userLabel="Name">
+                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="33"/>
                                                         <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="QKg-fN-6X9"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZZ-R1-mD7" userLabel="Where">
-                                                        <rect key="frame" x="0.0" y="4" width="142" height="106"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZZ-R1-mD7" userLabel="Where">
+                                                        <rect key="frame" x="0.0" y="35" width="142" height="33"/>
                                                         <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="tid-u7-UQr"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o83-f1-AJS" userLabel="When">
-                                                        <rect key="frame" x="0.0" y="114" width="142" height="0.0"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o83-f1-AJS" userLabel="When">
+                                                        <rect key="frame" x="0.0" y="70" width="142" height="33"/>
                                                         <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="1Pn-GY-v5P"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNu-Ue-cNJ" userLabel="URL">
-                                                        <rect key="frame" x="0.0" y="118" width="142" height="0.0"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNu-Ue-cNJ" userLabel="URL">
+                                                        <rect key="frame" x="0.0" y="105" width="142" height="33"/>
                                                         <animations/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="NVU-ow-S2F"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <connections>
                                                             <action selector="openURL:" destination="Fhh-r8-wOj" eventType="touchUpInside" id="RnY-Ql-S4D"/>
@@ -238,9 +262,6 @@
                                                     </button>
                                                 </subviews>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstItem="mNu-Ue-cNJ" firstAttribute="height" secondItem="o83-f1-AJS" secondAttribute="height" id="qTv-Oj-p1y"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <animations/>
@@ -249,7 +270,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNZ-C4-mnl">
-                                        <rect key="frame" x="0.0" y="130" width="200" height="30"/>
+                                        <rect key="frame" x="0.0" y="150" width="200" height="10"/>
                                         <animations/>
                                         <state key="normal" title="See on map"/>
                                         <connections>
