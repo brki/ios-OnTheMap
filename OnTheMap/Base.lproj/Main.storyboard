@@ -12,10 +12,14 @@
             <objects>
                 <navigationController title="On The Map" id="0DL-QQ-BDv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="Map" id="CIv-si-Jao"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RG2-jK-BPh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="RG2-jK-BPh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <color key="tintColor" red="0.066621767240000004" green="0.63235452589999996" blue="0.1122306034" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.93495488169999996" green="1" blue="0.92421901230000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="ROg-mN-aqz" kind="relationship" relationship="rootViewController" id="l33-zF-zwJ"/>
@@ -23,7 +27,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQR-Zz-jEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1313" y="362"/>
+            <point key="canvasLocation" x="1313" y="368"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="CI3-rd-cJk">
@@ -84,7 +88,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93495488169999996" green="1" blue="0.92421901230000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.066621767241379304" green="0.63235452586206897" blue="0.11223060344827586" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="studentCell" id="et3-EY-1Am">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
@@ -118,6 +123,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="1" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.066621767240000004" green="0.63235452589999996" blue="0.1122306034" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -167,14 +174,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qlx-b1-iA1">
                                 <rect key="frame" x="200" y="220" width="200" height="160"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="inO-kU-36Y">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="inO-kU-36Y">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="138"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1GD-3D-1A3" userLabel="Labels">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="138"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1GD-3D-1A3" userLabel="Labels">
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="138"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Name:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJh-pH-VSU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJh-pH-VSU">
+                                                        <rect key="frame" x="112" y="0.0" width="50" height="33"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="63y-Ta-0IC"/>
@@ -183,8 +190,8 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Where:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWO-fL-jfp">
-                                                        <rect key="frame" x="0.0" y="35" width="50" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Where:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWO-fL-jfp">
+                                                        <rect key="frame" x="107" y="35" width="55" height="33"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="6Hf-yt-shI"/>
@@ -193,8 +200,8 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="When:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXP-I7-NUz">
-                                                        <rect key="frame" x="0.0" y="70" width="50" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="When:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXP-I7-NUz">
+                                                        <rect key="frame" x="112" y="70" width="50" height="33"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="jpy-le-axJ"/>
@@ -203,8 +210,8 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toH-oZ-DIo" userLabel="URL:">
-                                                        <rect key="frame" x="13" y="105" width="37" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toH-oZ-DIo" userLabel="URL:">
+                                                        <rect key="frame" x="125" y="105" width="37" height="33"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="uMF-j1-yp4"/>
@@ -216,11 +223,11 @@
                                                 </subviews>
                                                 <animations/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-3p-7B9" userLabel="Values">
-                                                <rect key="frame" x="58" y="0.0" width="142" height="138"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-3p-7B9" userLabel="Values">
+                                                <rect key="frame" x="170" y="0.0" width="30" height="138"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-9a-AUz" userLabel="Name">
-                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-9a-AUz" userLabel="Name">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="33"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="QKg-fN-6X9"/>
@@ -229,8 +236,8 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZZ-R1-mD7" userLabel="Where">
-                                                        <rect key="frame" x="0.0" y="35" width="142" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZZ-R1-mD7" userLabel="Where">
+                                                        <rect key="frame" x="0.0" y="35" width="30" height="33"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="tid-u7-UQr"/>
@@ -239,8 +246,8 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o83-f1-AJS" userLabel="When">
-                                                        <rect key="frame" x="0.0" y="70" width="142" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o83-f1-AJS" userLabel="When">
+                                                        <rect key="frame" x="0.0" y="70" width="30" height="33"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="1Pn-GY-v5P"/>
@@ -249,8 +256,8 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNu-Ue-cNJ" userLabel="URL">
-                                                        <rect key="frame" x="0.0" y="105" width="142" height="33"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNu-Ue-cNJ" userLabel="URL">
+                                                        <rect key="frame" x="0.0" y="105" width="30" height="33"/>
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="33" id="NVU-ow-S2F"/>
@@ -269,7 +276,7 @@
                                             <constraint firstAttribute="width" constant="200" placeholder="YES" id="RaE-RL-toy"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNZ-C4-mnl">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNZ-C4-mnl">
                                         <rect key="frame" x="0.0" y="150" width="200" height="10"/>
                                         <animations/>
                                         <state key="normal" title="See on map"/>
@@ -285,7 +292,7 @@
                             </stackView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="1" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qlx-b1-iA1" firstAttribute="centerY" secondItem="hVI-qH-Bv9" secondAttribute="centerY" id="0lX-2Z-uew"/>
                             <constraint firstItem="qlx-b1-iA1" firstAttribute="centerX" secondItem="hVI-qH-Bv9" secondAttribute="centerX" id="mfW-UC-tvQ"/>
@@ -308,10 +315,14 @@
             <objects>
                 <navigationController title="On The Map List" id="NHm-wA-lQW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="List" image="List" id="bjI-OZ-dgm"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gsk-jU-jzs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Gsk-jU-jzs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <color key="tintColor" red="0.066621767240000004" green="0.63235452589999996" blue="0.1122306034" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.93495488169999996" green="1" blue="0.92421901230000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="w43-Ew-awJ" kind="relationship" relationship="rootViewController" id="v9U-wE-iSt"/>
@@ -326,11 +337,11 @@
             <objects>
                 <tabBarController storyboardIdentifier="MainTabViewController" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.93495488169999996" green="1" blue="0.92421901230000003" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="0DL-QQ-BDv" kind="relationship" relationship="viewControllers" id="95Y-Ul-XKf"/>
@@ -417,7 +428,7 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.93495482206344604" green="1" blue="0.92421907186508179" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93495488166809082" green="1" blue="0.92421901226043701" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="0IG-DO-DL4" secondAttribute="trailing" id="2Sr-TR-AKd"/>
                             <constraint firstItem="0IG-DO-DL4" firstAttribute="leading" secondItem="IvW-D7-XJj" secondAttribute="leadingMargin" id="HdC-fi-v4L"/>

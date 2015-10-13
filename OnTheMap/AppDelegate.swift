@@ -18,5 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func onLogout() {
 		dataStore = StudentLocationDataStore()
 	}
+
+
+
+	var appearance = Appearance()
+
+	func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+		appearance.applyStyle()
+		return true
+	}
 }
 
