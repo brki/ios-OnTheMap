@@ -394,7 +394,6 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Uo-IH-jEs" userLabel="LoginButton">
                                                 <rect key="frame" x="0.0" y="129" width="520" height="34"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.23465768914473681" green="0.69623766450000002" blue="0.18775699009999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Login"/>

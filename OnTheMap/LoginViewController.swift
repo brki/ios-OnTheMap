@@ -28,7 +28,8 @@ class LoginViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Round the corner of the login button:
-		loginButton.layer.cornerRadius = 3
+		usernameField.layer.cornerRadius = 3
+		passwordField.layer.cornerRadius = 3
 	}
 
 	override func viewWillAppear(animated: Bool) {
