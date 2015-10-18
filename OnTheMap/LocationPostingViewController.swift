@@ -94,18 +94,13 @@ class LocationPostingViewController: UIViewController {
 	}
 
 	func attributedLocationPrompt() -> NSAttributedString {
-
 		let fontSize = CGFloat(17)
 		let actionString = actions.randomItem()
-		let prefix = "Where are you"
-		let prompt = "\(prefix) \(actionString) today?"
-		let actionStart = prefix.characters.count + 1
-		let actionLength = actionString.characters.count + 1
-		let systemFont = UIFont.systemFontOfSize(fontSize)
-		let boldSystemFont = UIFont.boldSystemFontOfSize(fontSize)
-
-		let attributedString = NSMutableAttributedString(string: prompt, attributes: [NSFontAttributeName: systemFont])
-		attributedString.addAttribute(NSFontAttributeName, value: boldSystemFont, range: NSMakeRange(actionStart, actionLength))
+		let normalAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(fontSize)]
+		let boldAttributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(fontSize)]
+		let attributedString = NSMutableAttributedString(string: "Where are you", attributes: normalAttributes)
+		attributedString.appendAttributedString(NSAttributedString(string: " \(actionString) ", attributes: boldAttributes))
+		attributedString.appendAttributedString(NSAttributedString(string: "today?", attributes: normalAttributes))
 		return NSAttributedString(attributedString: attributedString)
 	}
 
