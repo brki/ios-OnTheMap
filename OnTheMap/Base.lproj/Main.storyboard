@@ -362,7 +362,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-yj-6U4" userLabel="Location Text Field">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address or place name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-yj-6U4" userLabel="Location Text Field">
                                         <rect key="frame" x="8" y="45" width="420" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -390,6 +390,9 @@
                                         <rect key="frame" x="249" y="135" width="103" height="30"/>
                                         <animations/>
                                         <state key="normal" title="Search on map"/>
+                                        <connections>
+                                            <action selector="searchForLocation:" destination="wFp-Xe-Kra" eventType="touchUpInside" id="A21-Hi-kPl"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -402,7 +405,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMA-C4-YFJ" userLabel="Link Posting View">
                                 <rect key="frame" x="0.0" y="50" width="600" height="130"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lop-V3-a2v" userLabel="Link Text Field">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL you'd like to share" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lop-V3-a2v" userLabel="Link Text Field">
                                         <rect key="frame" x="8" y="50" width="420" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -457,6 +460,8 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="locationSearchButton" destination="hXN-lO-QxH" id="aN9-ui-a0n"/>
+                        <outlet property="locationTextField" destination="UbO-yj-6U4" id="cRy-bc-Naq"/>
                         <outlet property="verbLabel" destination="obl-da-sdK" id="EUA-E2-vWU"/>
                     </connections>
                 </viewController>

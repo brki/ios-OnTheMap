@@ -17,8 +17,10 @@ struct GreenTheme: Theme {
 	var colors = [
 		"tabBarTint": UIColor.rgb(17, 161, 29),
 		"buttonActiveText": UIColor.rgb(17, 161, 29),
-		"background": UIColor.rgb(238, 255, 236),
 		"textFieldBackground": UIColor.rgb(220, 222, 224),
+		// Unfortunately it doesn't work to just set the background color for all views, but here
+		// are the RGB values for the light green backgound:
+		"background": UIColor.rgb(238, 255, 236),
 	]
 }
 
@@ -27,9 +29,6 @@ class Appearance {
 	var theme = GreenTheme()
 
 	func applyStyle() {
-//		if let bg = theme.colors["background"] {
-//			UIView.appearance().backgroundColor = bg
-//		}
 		if let tint = theme.colors["tabBarTint"] {
 			UITabBar.appearance().tintColor = tint
 			UITextField.appearance().tintColor = tint
@@ -39,7 +38,6 @@ class Appearance {
 		}
 		if let color = theme.colors["textFieldBackground"] {
 			UITextField.appearance().backgroundColor = color
-
 		}
 	}
 }
