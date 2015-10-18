@@ -16,12 +16,12 @@ class LocationPostingViewController: UIViewController {
 	var actions = ["studying", "breathing", "working", "eating", "sleeping", "smiling", "learning", "being present", "enjoying life", "creating solutions", "feeling alright", "growing wise", "meeting a friend"]
 	var geoEncoder = CLGeocoder()
 
-	@IBOutlet weak var verbLabel: UILabel!
+	@IBOutlet weak var locationPrompt: UILabel!
 	@IBOutlet weak var locationSearchButton: UIButton!
 	@IBOutlet weak var locationTextField: UITextField!
 
 	override func viewDidLoad() {
-		verbLabel.text = actions.randomItem()
+		locationPrompt.attributedText = attributedLocationPrompt()
 		client.selfInformation() { selfInfo, error in
 			if let error = error {
 				print("LocationPostingViewController::viewDidLoad - " + error.localizedDescription)
@@ -40,6 +40,7 @@ class LocationPostingViewController: UIViewController {
 			return
 		}
 
+		// TODO: make it clear to user that activity is happening (spinning indicator or similar)
 		locationSearchButton.enabled = false
 		geoEncoder.geocodeAddressString(searchText) { placemarks, error in
 
@@ -90,6 +91,22 @@ class LocationPostingViewController: UIViewController {
 
 	@IBAction func backgroundViewTapped(sender: AnyObject) {
 		view.endEditing(true)
+	}
+
+	func attributedLocationPrompt() -> NSAttributedString {
+
+		let fontSize = CGFloat(17)
+		let actionString = actions.randomItem()
+		let prefix = "Where are you"
+		let prompt = "\(prefix) \(actionString) today?"
+		let actionStart = prefix.characters.count + 1
+		let actionLength = actionString.characters.count + 1
+		let systemFont = UIFont.systemFontOfSize(fontSize)
+		let boldSystemFont = UIFont.boldSystemFontOfSize(fontSize)
+
+		let attributedString = NSMutableAttributedString(string: prompt, attributes: [NSFontAttributeName: systemFont])
+		attributedString.addAttribute(NSFontAttributeName, value: boldSystemFont, range: NSMakeRange(actionStart, actionLength))
+		return NSAttributedString(attributedString: attributedString)
 	}
 
 	func showAlert(title: String?, message: String? = nil, addToMainQueue: Bool? = true) {

@@ -341,43 +341,36 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grM-ve-Ebe" userLabel="Location prompt View">
                                 <rect key="frame" x="0.0" y="50" width="600" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-IY-pTj">
-                                        <rect key="frame" x="8" y="12" width="111" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-IY-pTj">
+                                        <rect key="frame" x="8" y="12" width="584" height="20"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obl-da-sdK" userLabel="Verb">
-                                        <rect key="frame" x="121" y="12" width="76" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbX-v3-cNy">
-                                        <rect key="frame" x="199" y="12" width="52" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Where are you studying today?">
+                                                <attributes>
+                                                    <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address or place name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-yj-6U4" userLabel="Location Text Field">
-                                        <rect key="frame" x="8" y="45" width="420" height="30"/>
+                                        <rect key="frame" x="8" y="44" width="420" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                     </textField>
+                                    <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pKg-SY-qED">
+                                        <rect key="frame" x="0.0" y="130" width="600" height="420"/>
+                                        <animations/>
+                                    </mapView>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.93495488169999996" green="1" blue="0.92421901230000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="qbX-v3-cNy" firstAttribute="leading" secondItem="obl-da-sdK" secondAttribute="trailing" constant="2" id="3wR-ox-tRg"/>
                                     <constraint firstItem="UMg-IY-pTj" firstAttribute="top" secondItem="grM-ve-Ebe" secondAttribute="top" constant="12" id="4hg-2x-8au"/>
-                                    <constraint firstItem="obl-da-sdK" firstAttribute="centerY" secondItem="UMg-IY-pTj" secondAttribute="centerY" id="N00-kI-YkE"/>
+                                    <constraint firstItem="UMg-IY-pTj" firstAttribute="trailing" secondItem="grM-ve-Ebe" secondAttribute="trailingMargin" id="CtG-LD-bLw"/>
                                     <constraint firstItem="UMg-IY-pTj" firstAttribute="leading" secondItem="grM-ve-Ebe" secondAttribute="leadingMargin" id="cgj-r6-Jvm"/>
-                                    <constraint firstItem="qbX-v3-cNy" firstAttribute="centerY" secondItem="UMg-IY-pTj" secondAttribute="centerY" id="f1i-KR-uyr"/>
-                                    <constraint firstItem="obl-da-sdK" firstAttribute="leading" secondItem="UMg-IY-pTj" secondAttribute="trailing" constant="2" id="h4f-Kr-uaU"/>
                                     <constraint firstItem="UbO-yj-6U4" firstAttribute="top" secondItem="UMg-IY-pTj" secondAttribute="bottom" constant="12" id="nwF-yL-Al6"/>
                                     <constraint firstItem="UbO-yj-6U4" firstAttribute="leading" secondItem="UMg-IY-pTj" secondAttribute="leading" id="t2a-tK-DUV"/>
                                     <constraint firstItem="UbO-yj-6U4" firstAttribute="width" secondItem="grM-ve-Ebe" secondAttribute="width" multiplier="0.7" id="zmH-IS-f0U"/>
@@ -402,16 +395,16 @@
                                     <constraint firstItem="hXN-lO-QxH" firstAttribute="centerY" secondItem="gZc-So-Nss" secondAttribute="centerY" id="u3q-3H-jbb"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMA-C4-YFJ" userLabel="Link Posting View">
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMA-C4-YFJ" userLabel="Link Posting View">
                                 <rect key="frame" x="0.0" y="50" width="600" height="130"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL you'd like to share" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lop-V3-a2v" userLabel="Link Text Field">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL you'd like to share" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lop-V3-a2v" userLabel="Link Text Field">
                                         <rect key="frame" x="8" y="50" width="420" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJt-Yu-74h" userLabel="Submit Button">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJt-Yu-74h" userLabel="Submit Button">
                                         <rect key="frame" x="440" y="50" width="49" height="30"/>
                                         <animations/>
                                         <state key="normal" title="Submit"/>
@@ -427,10 +420,6 @@
                                     <constraint firstItem="lop-V3-a2v" firstAttribute="leading" secondItem="yMA-C4-YFJ" secondAttribute="leadingMargin" id="znu-iO-UfS"/>
                                 </constraints>
                             </view>
-                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pKg-SY-qED">
-                                <rect key="frame" x="0.0" y="180" width="600" height="420"/>
-                                <animations/>
-                            </mapView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.93495488169999996" green="1" blue="0.92421901230000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -442,16 +431,11 @@
                             <constraint firstItem="gZc-So-Nss" firstAttribute="top" secondItem="grM-ve-Ebe" secondAttribute="bottom" id="ACP-3k-Ybc"/>
                             <constraint firstItem="fsK-ea-gsa" firstAttribute="top" secondItem="PtY-VH-RDk" secondAttribute="bottom" id="AJd-bH-IUc"/>
                             <constraint firstItem="gZc-So-Nss" firstAttribute="centerX" secondItem="qUZ-vK-Egp" secondAttribute="centerX" id="Btd-lX-5vL"/>
-                            <constraint firstItem="pKg-SY-qED" firstAttribute="bottom" secondItem="oeE-jA-aP2" secondAttribute="top" id="DwB-fg-EEe"/>
                             <constraint firstItem="gZc-So-Nss" firstAttribute="width" secondItem="qUZ-vK-Egp" secondAttribute="width" id="FQJ-cn-LgO"/>
-                            <constraint firstItem="pKg-SY-qED" firstAttribute="centerX" secondItem="qUZ-vK-Egp" secondAttribute="centerX" id="JJm-4w-rje"/>
                             <constraint firstItem="yMA-C4-YFJ" firstAttribute="centerX" secondItem="qUZ-vK-Egp" secondAttribute="centerX" id="Mvg-xC-22r"/>
                             <constraint firstItem="grM-ve-Ebe" firstAttribute="height" secondItem="qUZ-vK-Egp" secondAttribute="height" multiplier="0.25" id="OEY-Op-MzC"/>
-                            <constraint firstItem="pKg-SY-qED" firstAttribute="width" secondItem="qUZ-vK-Egp" secondAttribute="width" id="lf3-As-tYD"/>
                             <constraint firstItem="yMA-C4-YFJ" firstAttribute="top" secondItem="fsK-ea-gsa" secondAttribute="bottom" id="nmc-dm-5dG"/>
-                            <constraint firstItem="pKg-SY-qED" firstAttribute="top" secondItem="yMA-C4-YFJ" secondAttribute="bottom" id="p1e-or-QHI"/>
                             <constraint firstItem="yMA-C4-YFJ" firstAttribute="width" secondItem="qUZ-vK-Egp" secondAttribute="width" id="pEh-5t-yuJ"/>
-                            <constraint firstItem="pKg-SY-qED" firstAttribute="height" secondItem="qUZ-vK-Egp" secondAttribute="height" multiplier="0.7" id="tgw-bY-7LH"/>
                             <constraint firstItem="grM-ve-Ebe" firstAttribute="width" secondItem="qUZ-vK-Egp" secondAttribute="width" id="tzI-GT-F9b"/>
                             <constraint firstItem="gZc-So-Nss" firstAttribute="height" secondItem="qUZ-vK-Egp" secondAttribute="height" multiplier="0.5" id="yH4-Jf-EHL"/>
                         </constraints>
@@ -460,9 +444,9 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="locationPrompt" destination="UMg-IY-pTj" id="sYe-yB-ipq"/>
                         <outlet property="locationSearchButton" destination="hXN-lO-QxH" id="aN9-ui-a0n"/>
                         <outlet property="locationTextField" destination="UbO-yj-6U4" id="cRy-bc-Naq"/>
-                        <outlet property="verbLabel" destination="obl-da-sdK" id="EUA-E2-vWU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0X-UT-5lQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
