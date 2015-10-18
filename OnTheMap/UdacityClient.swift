@@ -99,6 +99,40 @@ class UdacityClient: WebClient {
 
 		}
 	}
+
+	func selfInformation(completionHandler: (UdacityStudentInformation?, NSError?) -> Void) {
+		guard let selfId = accountKey else {
+			completionHandler(nil, Error.PreconditionNotMet.asNSError(detail: "Udacity account ID not available"))
+			return
+		}
+		let url = router.url(URLs.UserInfo, pathParams: ["{id}": selfId])!
+
+		udacityRequest(url, requestMethod: .GET) { jsonObject, response, error in
+
+			// If jsonObject or response are nil, error will be an NSError.
+			// Call completion hander with error:
+			guard let jsonObject = jsonObject, response = response where error == nil else {
+				completionHandler(nil, error)
+				return
+			}
+
+			guard response.statusCode >= 200 && response.statusCode < 300 else {
+				completionHandler(nil, Error.UnexpectedResponseCode.asNSError(detail: "Response status code: \(response.statusCode)"))
+				return
+			}
+
+			if let json = jsonObject as? [String: AnyObject],
+				user = json["user"] as? [String: AnyObject],
+				firstName = user["first_name"] as? String,
+				lastName = user["last_name"] as? String {
+					let url = user["website_url"] as? String
+					let selfInfo = UdacityStudentInformation(firstName: firstName, lastName: lastName, websiteURL: url)
+					completionHandler(selfInfo, nil)
+			} else {
+				completionHandler(nil, Error.UnexpectedJSONStructure.asNSError())
+			}
+		}
+	}
 }
 
 // MARK: Web service URLs and helper methods

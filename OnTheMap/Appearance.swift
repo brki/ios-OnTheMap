@@ -17,7 +17,8 @@ struct GreenTheme: Theme {
 	var colors = [
 		"tabBarTint": UIColor.rgb(17, 161, 29),
 		"buttonActiveText": UIColor.rgb(17, 161, 29),
-		"background": UIColor.rgb(238, 255, 236)
+		"background": UIColor.rgb(238, 255, 236),
+		"textFieldBackground": UIColor.rgb(220, 222, 224),
 	]
 }
 
@@ -31,9 +32,14 @@ class Appearance {
 //		}
 		if let tint = theme.colors["tabBarTint"] {
 			UITabBar.appearance().tintColor = tint
+			UITextField.appearance().tintColor = tint
 		}
-		if let active = theme.colors["buttonActiveText"] {
-			UIButton.appearance().tintColor = active
+		if let tint = theme.colors["buttonActiveText"] {
+			UIButton.appearance().tintColor = tint
+		}
+		if let color = theme.colors["textFieldBackground"] {
+			UITextField.appearance().backgroundColor = color
+
 		}
 	}
 }

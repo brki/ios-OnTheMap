@@ -130,6 +130,8 @@ extension ListViewController {
 			}
 			let detailVC = segue.destinationViewController as! ListDetailViewController
 			detailVC.studentInformation = studentInfo
+		} else if segue.identifier == "ListToLocationPosting" {
+			
 		}
 	}
 }

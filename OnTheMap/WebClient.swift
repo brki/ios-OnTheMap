@@ -136,6 +136,7 @@ extension WebClient {
 		case UnexpectedResponseCode = 8
 		case UnexpectedJSONStructure = 9
 		case UnexpectedNoResponse = 10
+		case PreconditionNotMet = 11
 
 		var description: String {
 			switch self {
@@ -149,6 +150,7 @@ extension WebClient {
 			case UnexpectedResponseCode: return "Unexpected response code"
 			case UnexpectedJSONStructure: return "Error parsing JSON: unexpected JSON structure"
 			case UnexpectedNoResponse: return "Error parsing JSON: unexpected JSON structure"
+			case PreconditionNotMet: return "Precondition not met"
 			}
 		}
 
