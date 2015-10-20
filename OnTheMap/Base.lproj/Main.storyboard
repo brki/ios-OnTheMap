@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wnC-s6-L1z">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -533,38 +534,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0IG-DO-DL4" userLabel="LoginFormWrapper">
-                                <rect key="frame" x="20" y="119" width="560" height="163"/>
+                                <rect key="frame" x="20" y="140" width="560" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="TQQ-q7-iHp" userLabel="LoginFormStack">
-                                        <rect key="frame" x="20" y="0.0" width="520" height="163"/>
+                                        <rect key="frame" x="20" y="0.0" width="520" height="120"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRm-W6-1ox" userLabel="UdacityLoginLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="520" height="34"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YWX-jz-22g" userLabel="UsernameField">
-                                                <rect key="frame" x="0.0" y="43" width="520" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="520" height="34"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.8459782600402832" green="0.85953682661056519" blue="0.87780684232711792" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IF2-co-vUU" userLabel="PasswordField">
-                                                <rect key="frame" x="0.0" y="86" width="520" height="34"/>
+                                                <rect key="frame" x="0.0" y="43" width="520" height="34"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.84597825999999998" green="0.85953682659999997" blue="0.87780684229999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Uo-IH-jEs" userLabel="LoginButton">
-                                                <rect key="frame" x="0.0" y="129" width="520" height="34"/>
+                                                <rect key="frame" x="0.0" y="86" width="520" height="34"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Login"/>
+                                                <state key="normal" title="Login to Udacity"/>
                                                 <connections>
                                                     <action selector="loginToUdacity:" destination="wnC-s6-L1z" eventType="touchUpInside" id="F70-M7-I57"/>
                                                 </connections>
@@ -572,13 +566,12 @@
                                         </subviews>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstItem="qRm-W6-1ox" firstAttribute="height" secondItem="2Uo-IH-jEs" secondAttribute="height" id="EhC-es-hYV"/>
                                             <constraint firstItem="IF2-co-vUU" firstAttribute="height" secondItem="2Uo-IH-jEs" secondAttribute="height" id="Pg0-Nz-2jS"/>
                                             <constraint firstItem="YWX-jz-22g" firstAttribute="height" secondItem="2Uo-IH-jEs" secondAttribute="height" id="yrU-Sa-olT"/>
                                         </constraints>
                                     </stackView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WTY-ki-TjN">
-                                        <rect key="frame" x="410" y="136" width="20" height="20"/>
+                                        <rect key="frame" x="410" y="93" width="20" height="20"/>
                                         <animations/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -596,11 +589,17 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.93495488166809082" green="1" blue="0.92421901226043701" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="0IG-DO-DL4" secondAttribute="trailing" id="2Sr-TR-AKd"/>
                             <constraint firstItem="0IG-DO-DL4" firstAttribute="leading" secondItem="IvW-D7-XJj" secondAttribute="leadingMargin" id="HdC-fi-v4L"/>
-                            <constraint firstItem="0IG-DO-DL4" firstAttribute="centerY" secondItem="IvW-D7-XJj" secondAttribute="centerY" multiplier="2/3" id="eT6-Dn-gME"/>
+                            <constraint firstItem="0IG-DO-DL4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LqW-as-pyP" secondAttribute="bottom" priority="999" constant="20" id="XQ6-AT-qFx"/>
+                            <constraint firstItem="0IG-DO-DL4" firstAttribute="centerY" secondItem="IvW-D7-XJj" secondAttribute="centerY" multiplier="2/3" priority="750" id="eT6-Dn-gME"/>
+                            <constraint firstItem="0IG-DO-DL4" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="IvW-D7-XJj" secondAttribute="centerY" constant="-40" id="tmi-jk-jCL"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MeM-Cx-XCz" appends="YES" id="pqz-5z-5lJ"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="loginActivityIndicator" destination="WTY-ki-TjN" id="d9n-HJ-caZ"/>
@@ -612,6 +611,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dk9-yy-4c0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MeM-Cx-XCz">
+                    <connections>
+                        <action selector="viewTapped:" destination="wnC-s6-L1z" id="Ebf-17-UfS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="606" y="-757"/>
         </scene>

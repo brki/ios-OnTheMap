@@ -80,6 +80,10 @@ class LoginViewController: UIViewController {
 		}
 	}
 
+	@IBAction func viewTapped(sender: AnyObject) {
+		view.endEditing(true)
+	}
+
 	func showErrorMessage(title: String?, detail: String? = nil, completionHandler: ((UIAlertAction) -> Void)? = nil) {
 		on_main_queue {
 			let alertController = UIAlertController(title: title, message: detail, preferredStyle: .Alert)
