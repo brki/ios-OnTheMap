@@ -19,6 +19,8 @@ class LocationPostingViewController: UIViewController {
 	@IBOutlet weak var locationPrompt: UILabel!
 	@IBOutlet weak var locationSearchButton: UIButton!
 	@IBOutlet weak var locationTextField: UITextField!
+	@IBOutlet weak var stepOneView: UIView!
+	@IBOutlet weak var stepTwoView: UIView!
 
 	override func viewDidLoad() {
 		locationPrompt.attributedText = attributedLocationPrompt()
@@ -77,9 +79,14 @@ class LocationPostingViewController: UIViewController {
 			}
 			print(places)
 			if places.count == 1 {
+				on_main_queue {
+					self.showURLEntryAndMapForLocation(places[0].location!)
+				}
 				// TODO: show on map
 			} else {
-				// TODO: let user select from a list?
+
+				// TODO: show a UIPickerView to let user select options
+
 			}
 		}
 	}
@@ -114,6 +121,23 @@ class LocationPostingViewController: UIViewController {
 		} else {
 			presentViewController(alertController, animated: true, completion: nil)
 		}
+	}
+
+	func showURLEntryAndMapForLocation(location: CLLocation) {
+		UIView.transitionWithView(
+			stepOneView,
+			duration: 0.3,
+			options: .TransitionCrossDissolve,
+			animations: { self.stepOneView.hidden = true },
+			completion: { finished in
+				UIView.transitionWithView(
+					self.stepTwoView,
+					duration: 0.4,
+					options: .TransitionCrossDissolve,
+					animations: {self.stepTwoView.hidden = false},
+					completion: nil)
+			}
+		)
 	}
 }
 
