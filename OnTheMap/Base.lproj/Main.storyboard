@@ -466,6 +466,7 @@
                         <outlet property="locationPrompt" destination="UMg-IY-pTj" id="sYe-yB-ipq"/>
                         <outlet property="locationSearchButton" destination="hXN-lO-QxH" id="aN9-ui-a0n"/>
                         <outlet property="locationTextField" destination="UbO-yj-6U4" id="cRy-bc-Naq"/>
+                        <outlet property="mapView" destination="pKg-SY-qED" id="aaw-Tm-Je8"/>
                         <outlet property="stepOneView" destination="NUh-Iw-cuq" id="tud-No-4cY"/>
                         <outlet property="stepTwoView" destination="wYa-mQ-Fdh" id="sMo-M7-JGB"/>
                     </connections>
