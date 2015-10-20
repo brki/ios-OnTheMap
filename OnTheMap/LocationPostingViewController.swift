@@ -124,6 +124,7 @@ class LocationPostingViewController: UIViewController {
 	}
 
 	func showURLEntryAndMapForLocation(location: CLLocation) {
+		view.endEditing(true)
 		UIView.transitionWithView(
 			stepOneView,
 			duration: 0.3,
