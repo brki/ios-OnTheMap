@@ -7,26 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D30031771BBC2EA00084247C /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30031761BBC2EA00084247C /* StudentInformation.swift */; settings = {ASSET_TAGS = (); }; };
-		D3320A2F1BC31C2900120E12 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A2E1BC31C2900120E12 /* DateFormatter.swift */; settings = {ASSET_TAGS = (); }; };
-		D3320A311BC5325700120E12 /* GCDHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A301BC5325700120E12 /* GCDHelpers.swift */; settings = {ASSET_TAGS = (); }; };
-		D3320A341BC5835800120E12 /* StudentLocationTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A331BC5835800120E12 /* StudentLocationTableData.swift */; settings = {ASSET_TAGS = (); }; };
-		D3320A361BC707A600120E12 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A351BC707A600120E12 /* utilities.swift */; settings = {ASSET_TAGS = (); }; };
-		D3320A381BC860CE00120E12 /* StudentLocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A371BC860CE00120E12 /* StudentLocationDataStore.swift */; settings = {ASSET_TAGS = (); }; };
-		D3320A3A1BC96AC900120E12 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A391BC96AC900120E12 /* ListDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D3320A3C1BCC3A2700120E12 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A3B1BCC3A2700120E12 /* Appearance.swift */; settings = {ASSET_TAGS = (); }; };
-		D3320A3F1BCC3BD200120E12 /* extension-UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A3E1BCC3BD200120E12 /* extension-UIColor.swift */; settings = {ASSET_TAGS = (); }; };
-		D34392D61BBB138400536C43 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34392D51BBB138400536C43 /* ParseClient.swift */; settings = {ASSET_TAGS = (); }; };
-		D34A4A341BBFDBD000E1D491 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34A4A331BBFDBD000E1D491 /* ParseCredentials.swift */; settings = {ASSET_TAGS = (); }; };
-		D37E11FF1BCC4A38006BCDBB /* operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E11FE1BCC4A38006BCDBB /* operators.swift */; settings = {ASSET_TAGS = (); }; };
-		D37E12031BD273E7006BCDBB /* LocationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12021BD273E7006BCDBB /* LocationPostingViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D37E12051BD3C4E6006BCDBB /* UdacityStudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12041BD3C4E6006BCDBB /* UdacityStudentInformation.swift */; settings = {ASSET_TAGS = (); }; };
-		D37E12071BD3CD55006BCDBB /* extension-Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12061BD3CD55006BCDBB /* extension-Array.swift */; settings = {ASSET_TAGS = (); }; };
-		D37E12091BD3E117006BCDBB /* extension-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12081BD3E117006BCDBB /* extension-String.swift */; settings = {ASSET_TAGS = (); }; };
-		D3A1C14D1BBB0F7C0003DF06 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A1C14C1BBB0F7C0003DF06 /* WebClient.swift */; settings = {ASSET_TAGS = (); }; };
-		D3C214F31BBFFAEA00F07DCE /* StudentAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C214F21BBFFAEA00F07DCE /* StudentAnnotation.swift */; settings = {ASSET_TAGS = (); }; };
-		D3C214F51BC011BD00F07DCE /* AnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C214F41BC011BD00F07DCE /* AnnotationManager.swift */; settings = {ASSET_TAGS = (); }; };
-		D3C214FC1BC3032000F07DCE /* DetailCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C214FB1BC3032000F07DCE /* DetailCallout.swift */; settings = {ASSET_TAGS = (); }; };
+		D30031771BBC2EA00084247C /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30031761BBC2EA00084247C /* StudentInformation.swift */; };
+		D3320A2F1BC31C2900120E12 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A2E1BC31C2900120E12 /* DateFormatter.swift */; };
+		D3320A311BC5325700120E12 /* GCDHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A301BC5325700120E12 /* GCDHelpers.swift */; };
+		D3320A341BC5835800120E12 /* StudentLocationTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A331BC5835800120E12 /* StudentLocationTableData.swift */; };
+		D3320A361BC707A600120E12 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A351BC707A600120E12 /* utilities.swift */; };
+		D3320A381BC860CE00120E12 /* StudentLocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A371BC860CE00120E12 /* StudentLocationDataStore.swift */; };
+		D3320A3A1BC96AC900120E12 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A391BC96AC900120E12 /* ListDetailViewController.swift */; };
+		D3320A3C1BCC3A2700120E12 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A3B1BCC3A2700120E12 /* Appearance.swift */; };
+		D3320A3F1BCC3BD200120E12 /* extension-UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A3E1BCC3BD200120E12 /* extension-UIColor.swift */; };
+		D34392D61BBB138400536C43 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34392D51BBB138400536C43 /* ParseClient.swift */; };
+		D34A4A341BBFDBD000E1D491 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34A4A331BBFDBD000E1D491 /* ParseCredentials.swift */; };
+		D36BC56B1BDD5A9F00C2675F /* PlacePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36BC56A1BDD5A9F00C2675F /* PlacePickerData.swift */; };
+		D36BC56D1BDD5D4F00C2675F /* extension-CLPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36BC56C1BDD5D4F00C2675F /* extension-CLPlacemark.swift */; };
+		D37E11FF1BCC4A38006BCDBB /* operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E11FE1BCC4A38006BCDBB /* operators.swift */; };
+		D37E12031BD273E7006BCDBB /* LocationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12021BD273E7006BCDBB /* LocationPostingViewController.swift */; };
+		D37E12051BD3C4E6006BCDBB /* UdacityStudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12041BD3C4E6006BCDBB /* UdacityStudentInformation.swift */; };
+		D37E12071BD3CD55006BCDBB /* extension-Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12061BD3CD55006BCDBB /* extension-Array.swift */; };
+		D37E12091BD3E117006BCDBB /* extension-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12081BD3E117006BCDBB /* extension-String.swift */; };
+		D3A1C14D1BBB0F7C0003DF06 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A1C14C1BBB0F7C0003DF06 /* WebClient.swift */; };
+		D3C214F31BBFFAEA00F07DCE /* StudentAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C214F21BBFFAEA00F07DCE /* StudentAnnotation.swift */; };
+		D3C214F51BC011BD00F07DCE /* AnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C214F41BC011BD00F07DCE /* AnnotationManager.swift */; };
+		D3C214FC1BC3032000F07DCE /* DetailCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C214FB1BC3032000F07DCE /* DetailCallout.swift */; };
 		D3E707521BB2A55E00E59045 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707511BB2A55E00E59045 /* AppDelegate.swift */; };
 		D3E707541BB2A55E00E59045 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707531BB2A55E00E59045 /* MapViewController.swift */; };
 		D3E707561BB2A55E00E59045 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707551BB2A55E00E59045 /* ListViewController.swift */; };
@@ -35,9 +37,9 @@
 		D3E7075E1BB2A55E00E59045 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E7075C1BB2A55E00E59045 /* LaunchScreen.storyboard */; };
 		D3E707691BB2A55E00E59045 /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707681BB2A55E00E59045 /* OnTheMapTests.swift */; };
 		D3E707741BB2A55E00E59045 /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707731BB2A55E00E59045 /* OnTheMapUITests.swift */; };
-		D3E707821BB2A5FB00E59045 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707811BB2A5FB00E59045 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D3E707841BB2A8A200E59045 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707831BB2A8A200E59045 /* UdacityClient.swift */; settings = {ASSET_TAGS = (); }; };
-		D3E707881BB48C9D00E59045 /* URLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707871BB48C9D00E59045 /* URLEncoder.swift */; settings = {ASSET_TAGS = (); }; };
+		D3E707821BB2A5FB00E59045 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707811BB2A5FB00E59045 /* LoginViewController.swift */; };
+		D3E707841BB2A8A200E59045 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707831BB2A8A200E59045 /* UdacityClient.swift */; };
+		D3E707881BB48C9D00E59045 /* URLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E707871BB48C9D00E59045 /* URLEncoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		D3320A3E1BCC3BD200120E12 /* extension-UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-UIColor.swift"; sourceTree = "<group>"; };
 		D34392D51BBB138400536C43 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		D34A4A331BBFDBD000E1D491 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseCredentials.swift; sourceTree = "<group>"; };
+		D36BC56A1BDD5A9F00C2675F /* PlacePickerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePickerData.swift; sourceTree = "<group>"; };
+		D36BC56C1BDD5D4F00C2675F /* extension-CLPlacemark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CLPlacemark.swift"; sourceTree = "<group>"; };
 		D37E11FE1BCC4A38006BCDBB /* operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = operators.swift; sourceTree = "<group>"; };
 		D37E12021BD273E7006BCDBB /* LocationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPostingViewController.swift; sourceTree = "<group>"; };
 		D37E12041BD3C4E6006BCDBB /* UdacityStudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityStudentInformation.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				D3320A331BC5835800120E12 /* StudentLocationTableData.swift */,
 				D3320A371BC860CE00120E12 /* StudentLocationDataStore.swift */,
 				D37E12041BD3C4E6006BCDBB /* UdacityStudentInformation.swift */,
+				D36BC56A1BDD5A9F00C2675F /* PlacePickerData.swift */,
 			);
 			name = DataModels;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				D37E11FE1BCC4A38006BCDBB /* operators.swift */,
 				D37E12061BD3CD55006BCDBB /* extension-Array.swift */,
 				D37E12081BD3E117006BCDBB /* extension-String.swift */,
+				D36BC56C1BDD5D4F00C2675F /* extension-CLPlacemark.swift */,
 			);
 			name = CoreExtensions;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				TargetAttributes = {
 					D3E7074D1BB2A55E00E59045 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = HCVHR6ZGAM;
 					};
 					D3E707631BB2A55E00E59045 = {
 						CreatedOnToolsVersion = 7.0;
@@ -386,11 +393,13 @@
 				D3E707561BB2A55E00E59045 /* ListViewController.swift in Sources */,
 				D3A1C14D1BBB0F7C0003DF06 /* WebClient.swift in Sources */,
 				D37E11FF1BCC4A38006BCDBB /* operators.swift in Sources */,
+				D36BC56D1BDD5D4F00C2675F /* extension-CLPlacemark.swift in Sources */,
 				D3320A361BC707A600120E12 /* utilities.swift in Sources */,
 				D3320A3A1BC96AC900120E12 /* ListDetailViewController.swift in Sources */,
 				D3E707521BB2A55E00E59045 /* AppDelegate.swift in Sources */,
 				D30031771BBC2EA00084247C /* StudentInformation.swift in Sources */,
 				D37E12031BD273E7006BCDBB /* LocationPostingViewController.swift in Sources */,
+				D36BC56B1BDD5A9F00C2675F /* PlacePickerData.swift in Sources */,
 				D3C214FC1BC3032000F07DCE /* DetailCallout.swift in Sources */,
 				D3320A2F1BC31C2900120E12 /* DateFormatter.swift in Sources */,
 				D37E12091BD3E117006BCDBB /* extension-String.swift in Sources */,
@@ -542,10 +551,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ch.truckin.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -553,10 +565,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ch.truckin.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

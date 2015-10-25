@@ -17,6 +17,7 @@ class LocationPostingViewController: UIViewController {
 	var actions = ["studying", "breathing", "working", "eating", "sleeping", "smiling", "learning", "being present", "enjoying life", "creating solutions", "feeling alright", "growing wise", "meeting a friend"]
 	var geoEncoder = CLGeocoder()
 	var selectedPlacemark: CLPlacemark?
+	var pickerData: PlacePickerData?
 
 	@IBOutlet weak var locationPrompt: UILabel!
 	@IBOutlet weak var locationSearchButton: UIButton!
@@ -24,6 +25,9 @@ class LocationPostingViewController: UIViewController {
 	@IBOutlet weak var stepOneView: UIView!
 	@IBOutlet weak var stepTwoView: UIView!
 	@IBOutlet weak var mapView: MKMapView!
+	@IBOutlet weak var placePickerView: UIPickerView!
+	@IBOutlet weak var searchActivityIndicator: UIActivityIndicatorView!
+
 
 	override func viewDidLoad() {
 		locationPrompt.attributedText = attributedLocationPrompt()
@@ -35,6 +39,9 @@ class LocationPostingViewController: UIViewController {
 			}
 			self.selfInfo = selfInfo
 		}
+
+		// Make the activity indicator a bit bigger:
+		searchActivityIndicator.transform = CGAffineTransformMakeScale(2.0, 2.0)
 	}
 	
 	@IBAction func cancel(sender: AnyObject) {
@@ -89,11 +96,19 @@ extension LocationPostingViewController {
 		}
 		view.endEditing(true)
 
-		// TODO: make it clear to user that activity is happening (spinning indicator or similar)
-		locationSearchButton.enabled = false
+		on_main_queue {
+			self.locationSearchButton.enabled = false
+			self.searchActivityIndicator.hidden = false
+			self.searchActivityIndicator.startAnimating()
+		}
+
 		geoEncoder.geocodeAddressString(searchText) { placemarks, error in
 
-			self.locationSearchButton.enabled = true
+			on_main_queue {
+				self.locationSearchButton.enabled = true
+				self.searchActivityIndicator.stopAnimating()
+			}
+
 			if let error = error {
 				guard error.domain == kCLErrorDomain, let clError = CLError(rawValue: error.code) else {
 					self.showAlert("Unexpected geocoding error", message: error.localizedDescription)
@@ -125,32 +140,40 @@ extension LocationPostingViewController {
 				return
 			}
 
-			print(places)
 			if places.count == 1 {
-				guard let _ = places[0].location else {
-					self.showAlert("No geocoordinates ", message: "Matching place found, but no latitude / longitude values are available.  Try being more specific.")
-					return
-				}
-				self.selectedPlacemark = places[0]
-				on_main_queue {
-					self.transitionToURLPostingView()
-				}
+				self.handleSelectedPlace(places[0])
 			} else {
-				for place in places {
-					print(self.placemarkAddress(place))
-				}
-				// TODO: show a UIPickerView to let user select options
+				self.showPickerViewForPlaces(places)
 			}
 		}
 	}
 
-	func placemarkAddress(placemark: CLPlacemark) -> String {
-		if let addressLines = placemark.addressDictionary?["FormattedAddressLines"] as? [String] {
-			return addressLines.joinWithSeparator(", ")
+	func handleSelectedPlace(place: CLPlacemark) {
+		guard let _ = place.location else {
+			self.showAlert("No geocoordinates ", message: "Matching place found, but no latitude / longitude values are available.  Try being more specific.")
+			return
 		}
-		return placemark.name ?? "Unknown"
+		self.selectedPlacemark = place
+		on_main_queue {
+			self.placePickerView.hidden = true
+			self.transitionToURLPostingView()
+		}
 	}
-	
+
+	func showPickerViewForPlaces(places: [CLPlacemark]) {
+		self.pickerData = PlacePickerData(placemarks: places, placeSelectedHandler: { [unowned self] place in
+			self.handleSelectedPlace(place)
+		})
+		placePickerView.delegate = pickerData
+		placePickerView.dataSource = pickerData
+		on_main_queue {
+			self.placePickerView.hidden = false
+		}
+	}
+
+	/**
+	Blend out the step 1 (location prompt) view, blend in the step 2 (map + url prompt) view.
+	*/
 	func transitionToURLPostingView() {
 		showSelectedLocationOnMap()
 		view.endEditing(true)

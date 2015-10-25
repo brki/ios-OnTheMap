@@ -6,4 +6,13 @@
 //  Copyright © 2015 truckin'. All rights reserved.
 //
 
-import Foundation
+import MapKit
+
+extension CLPlacemark {
+	func formattedAddress() -> String {
+		if let addressLines = self.addressDictionary?["FormattedAddressLines"] as? [String] {
+			return addressLines.joinWithSeparator(", ")
+		}
+		return self.name ?? "Unknown"
+	}
+}
