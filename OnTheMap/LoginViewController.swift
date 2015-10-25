@@ -48,6 +48,11 @@ class LoginViewController: UIViewController {
 			showErrorMessage("Please enter your username")
 			return
 		}
+		let trimmedUsername = username.trim()
+		guard trimmedUsername.characters.count > 0 else {
+			showErrorMessage("Please enter a non-blank username")
+			return
+		}
 		guard let password = passwordField.text where password.characters.count > 0 else {
 			showErrorMessage("Please enter your password")
 			return
@@ -55,7 +60,7 @@ class LoginViewController: UIViewController {
 
 		loginButton.enabled = false
 		loginActivityIndicator.startAnimating()
-		udacityClient.authenticate(username, password: password) { success, error in
+		udacityClient.authenticate(trimmedUsername, password: password) { success, error in
 			on_main_queue {
 				self.loginButton.enabled = true
 				self.loginActivityIndicator.stopAnimating()
