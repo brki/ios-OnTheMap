@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 /**
-Picker view shown when more than one location is returned from forward geo search.
+Data for picker view which is shown when more than one location is returned from forward geo search.
 
 An empty row is maintained at the top and bottom of the list, so that the user can select a
 no-action row (e.g. selecting the empty row does not initiate the transition to step 2).

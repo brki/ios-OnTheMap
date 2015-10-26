@@ -63,7 +63,7 @@ extension ParseClient {
 			if let error = error {
 				completionHandler(results: nil, error: error)
 			} else if let json = jsonObject as? [String: AnyObject], results = json["results"] as? [[String: AnyObject]] {
-					completionHandler(results: results, error: nil)
+				completionHandler(results: results, error: nil)
 			} else {
 				completionHandler(results: nil, error: Error.UnexpectedJSONStructure.asNSError())
 			}
@@ -107,6 +107,42 @@ extension ParseClient {
 			}
 			self.studentInformations = newStudentInfos
 			handler(newStudentInfos, nil)
+		}
+	}
+}
+
+// MARK: StudentInformation posting
+extension ParseClient {
+
+	/**
+	TODO: doc
+	*/
+	func addLocation(uniqueKey: String, firstName: String, lastName: String, mapString: String, mediaURL: NSURL, latitude: Double, longitude: Double, completion: (objectId: String?, error: NSError?) -> Void) {
+
+		let data = [
+			"uniqueKey": uniqueKey,
+			"firstName": firstName,
+			"lastName": lastName,
+			"mapString": mapString,
+			"mediaURL": mediaURL.absoluteString,
+			"latitude": latitude,
+			"longitude": longitude,
+		]
+		let postURL = router.url(Path.StudentLocation)
+		guard let body = objectToJsonString(data) else {
+			completion(objectId: nil, error: Error.JSONSerializationError.asNSError("ParseClient", detail: "Unable to encode data for posting"))
+			return
+		}
+		APIRequest(postURL!, requestMethod: .POST, body: body) { jsonObject, response, error in
+			guard error == nil else {
+				completion(objectId: nil, error: error)
+				return
+			}
+			guard let json = jsonObject, objectId = json["objectId"] as? String else {
+				completion(objectId: nil, error: Error.UnexpectedJSONStructure.asNSError())
+				return
+			}
+			completion(objectId: objectId, error: nil)
 		}
 	}
 }

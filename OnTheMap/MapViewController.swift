@@ -28,17 +28,15 @@ class MapViewController: UIViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		refreshStudentAnnotations(foreceRefresh: false) { updated in
-			self.autoOpenAnnotation()
+			if let id = self.autoOpenAnnotationId {
+				self.autoOpenAnnotationId = nil
+				self.autoOpenAnnotation(id)
+			}
 		}
 	}
 
 	deinit {
 		mapView.delegate = nil
-	}
-
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
-		autoOpenAnnotation()
 	}
 
 	@IBAction func logout(sender: UIBarButtonItem) {
@@ -61,14 +59,16 @@ class MapViewController: UIViewController {
 	/**
 	Open the annotation that has the uniqueStringId == self.autoOpenAnnotationId.
 	*/
-	func autoOpenAnnotation() {
-		guard let annotationId = autoOpenAnnotationId else {
-			return
-		}
-		autoOpenAnnotationId = nil
+	func autoOpenAnnotation(annotationId: String) {
 		for annotation in mapView.annotations {
 			if let studentAnnotation = annotation as? StudentAnnotation where studentAnnotation.uniqueStringId == annotationId {
-				mapView.selectAnnotation(studentAnnotation, animated: true)
+				on_main_queue {
+					UIView.animateWithDuration(0.5) {
+						self.mapView.setCenterCoordinate(studentAnnotation.coordinate, animated: false)
+						self.mapView.selectAnnotation(studentAnnotation, animated: false)
+					}
+				}
+				break
 			}
 		}
 	}
@@ -104,6 +104,11 @@ class MapViewController: UIViewController {
 	}
 
 	func showAlert(title: String?, message: String?, addToMainQueue: Bool? = true) {
+		guard let _ = view.superview else {
+			// Main view not currently on screen, so don't show the alert VC.
+			print("showAlert: not currently on screen.  Alert: \(title), message: \(message)")
+			return
+		}
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
 		alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
 		if let main = addToMainQueue where main == true {
@@ -206,5 +211,28 @@ extension MapViewController {
 			return false
 		}
 		return true
+	}
+}
+
+// MARK: Segues
+
+extension MapViewController {
+
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "MapToLocationPosting" {
+			let locationPostingVC = segue.destinationViewController as! LocationPostingViewController
+
+			// When the location has been successfully posted, refresh the annotation list
+			// and set the autoOpenAnnotationId.
+			locationPostingVC.locationPostedHandler = { [unowned self] coordinate, objectId in
+				self.refreshStudentAnnotations(foreceRefresh: true, postUpdateHandler: { updated in
+					if updated {
+						on_main_queue {
+							self.autoOpenAnnotation(objectId)
+						}
+					}
+				})
+			}
+		}
 	}
 }

@@ -29,7 +29,7 @@ class ListViewController: UIViewController {
 	}
 
 	@IBAction func refreshButtonTapped(sender: AnyObject) {
-		refreshStudentLocations(forceRefresh: true)
+		refreshStudentLocations()
 	}
 
 	@IBAction func logout(sender: UIBarButtonItem) {
@@ -45,7 +45,7 @@ class ListViewController: UIViewController {
 		}
 	}
 
-	func refreshStudentLocations(forceRefresh forceRefresh: Bool = false) {
+	func refreshStudentLocations(forceRefresh forceRefresh: Bool = true) {
 		tableData.dataStore.fetchStudentLocations(forceRefresh) { locations, error in
 			guard error == nil && locations != nil else {
 				self.showAlert("Unable to update locations", message: error?.localizedDescription ?? "Unknown error")
@@ -53,6 +53,7 @@ class ListViewController: UIViewController {
 			}
 			on_main_queue {
 				self.tableView.reloadData()
+				self.scrollToFirstRow()
 			}
 		}
 	}
@@ -73,6 +74,11 @@ class ListViewController: UIViewController {
 	}
 
 	func showAlert(title: String?, message: String?, addToMainQueue: Bool? = true) {
+		guard let _ = view.superview else {
+			// Main view not currently on screen, so don't show the alert VC.
+			print("showAlert: not currently on screen.  Alert: \(title), message: \(message)")
+			return
+		}
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
 		alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
 		if let main = addToMainQueue where main == true {
@@ -81,6 +87,13 @@ class ListViewController: UIViewController {
 			}
 		} else {
 			presentViewController(alertController, animated: true, completion: nil)
+		}
+	}
+
+	func scrollToFirstRow() {
+		if tableView.numberOfRowsInSection(0) > 0 {
+			let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+			self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
 		}
 	}
 }
@@ -131,7 +144,10 @@ extension ListViewController {
 			let detailVC = segue.destinationViewController as! ListDetailViewController
 			detailVC.studentInformation = studentInfo
 		} else if segue.identifier == "ListToLocationPosting" {
-			
+			let locationPostingVC = segue.destinationViewController as! LocationPostingViewController
+			locationPostingVC.locationPostedHandler = { [unowned self] coordinate, objectId in
+				self.refreshStudentLocations()
+			}
 		}
 	}
 }

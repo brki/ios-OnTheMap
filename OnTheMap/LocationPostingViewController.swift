@@ -13,28 +13,37 @@ import MapKit
 class LocationPostingViewController: UIViewController {
 
 	var selfInfo: UdacityStudentInformation?
-	var client = UdacityClient.sharedInstance
+	let udacityClient = UdacityClient.sharedInstance
+	let parseClient = ParseClient.sharedInstance
 	var actions = ["studying", "breathing", "working", "eating", "sleeping", "smiling", "learning", "being present", "enjoying life", "creating solutions", "feeling alright", "growing wise", "meeting a friend"]
 	var geoEncoder = CLGeocoder()
 	var selectedPlacemark: CLPlacemark?
 	var pickerData: PlacePickerData?
+	var locationPostedHandler: ((coordinate: CLLocationCoordinate2D, objectId: String) -> Void)?
 
+	@IBOutlet weak var stepOneView: UIView!
 	@IBOutlet weak var locationPrompt: UILabel!
 	@IBOutlet weak var locationSearchButton: UIButton!
 	@IBOutlet weak var locationTextField: UITextField!
-	@IBOutlet weak var stepOneView: UIView!
-	@IBOutlet weak var stepTwoView: UIView!
-	@IBOutlet weak var mapView: MKMapView!
 	@IBOutlet weak var placePickerView: UIPickerView!
 	@IBOutlet weak var searchActivityIndicator: UIActivityIndicatorView!
 
+	@IBOutlet weak var stepTwoView: UIView!
+	@IBOutlet weak var linkTextField: UITextField!
+	@IBOutlet weak var mapView: MKMapView!
+	@IBOutlet weak var submitLocationButton: UIButton!
 
 	override func viewDidLoad() {
 		locationPrompt.attributedText = attributedLocationPrompt()
-		client.selfInformation() { selfInfo, error in
+		udacityClient.selfInformation() { selfInfo, error in
 			if let error = error {
 				print("LocationPostingViewController::viewDidLoad - " + error.localizedDescription)
 				self.showAlert("Unable to get your Udacity information")
+				on_main_queue {
+					// There's no point in letting the user doing anything other than returning to
+					// the previous screen at this point.
+					self.stepOneView.hidden = true
+				}
 				return
 			}
 			self.selfInfo = selfInfo
@@ -234,5 +243,55 @@ extension LocationPostingViewController {
 			return MKCoordinateRegionMakeWithDistance(center, minRadius, minRadius)
 		}
 		return MKCoordinateRegionMakeWithDistance(center, radius, radius)
+	}
+
+	@IBAction func submitLocation(sender: AnyObject) {
+		guard let linkText = linkTextField.text?.trim() where linkText.characters.count > 0 else {
+			showAlert("Please enter a URL to share")
+			return
+		}
+		guard let url = extractValidHTTPURL(linkText) else {
+			showAlert("Please enter a valid URL")
+			return
+		}
+
+		guard let userInfo = selfInfo else {
+			print("submitLocation: userInfo unexpectedly nil")
+			return
+		}
+
+		guard let mapString = locationTextField.text?.trim() else {
+			print("submitLocation: mapString unexpectedly nil")
+			return
+		}
+		guard let coordinate = selectedPlacemark?.location?.coordinate else {
+			print("submitLocation: coordinate unexpectedly nil")
+			return
+		}
+		guard let accountKey = udacityClient.accountKey else {
+			print("submitLocation: accountKey unexpectedly nil")
+			return
+		}
+
+		self.submitLocationButton.enabled = false
+
+		parseClient.addLocation(accountKey, firstName: userInfo.firstName, lastName: userInfo.lastName, mapString: mapString, mediaURL: url, latitude: coordinate.latitude, longitude: coordinate.longitude) { objectId, error in
+
+			on_main_queue {
+				self.submitLocationButton.enabled = true
+			}
+
+			guard error == nil else {
+				self.showAlert("Error while posting location", message: error!.localizedDescription)
+				return
+			}
+
+			// Call locationPostedHandler which the presenting view controller may have set,
+			// and dismiss back to presenting view controller.
+			self.locationPostedHandler?(coordinate: coordinate, objectId: objectId!)
+			on_main_queue {
+				self.dismissViewControllerAnimated(true, completion: nil)
+			}
+		}
 	}
 }

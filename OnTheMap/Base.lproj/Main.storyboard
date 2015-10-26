@@ -71,7 +71,7 @@
                             </barButtonItem>
                             <barButtonItem image="MapMarker" id="J9a-IM-h9u" userLabel="MapMarker">
                                 <connections>
-                                    <segue destination="wFp-Xe-Kra" kind="presentation" id="w9l-cd-cbh"/>
+                                    <segue destination="wFp-Xe-Kra" kind="presentation" identifier="MapToLocationPosting" id="w9l-cd-cbh"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -153,7 +153,7 @@
                             </barButtonItem>
                             <barButtonItem image="MapMarker" id="cnH-dd-8vI" userLabel="MapMarker">
                                 <connections>
-                                    <segue destination="wFp-Xe-Kra" kind="presentation" id="ddf-tq-4s4"/>
+                                    <segue destination="wFp-Xe-Kra" kind="presentation" identifier="ListToLocationPosting" id="ddf-tq-4s4"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -340,11 +340,11 @@
                                     <action selector="cancel:" destination="wFp-Xe-Kra" eventType="touchUpInside" id="Nie-6m-F2E"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NUh-Iw-cuq" userLabel="Step one">
-                                <rect key="frame" x="0.0" y="66" width="600" height="534"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUh-Iw-cuq" userLabel="Step one">
+                                <rect key="frame" x="0.0" y="69" width="600" height="531"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grM-ve-Ebe" userLabel="Location prompt View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="268"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grM-ve-Ebe" userLabel="Location prompt View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="266"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-IY-pTj">
                                                 <rect key="frame" x="8" y="12" width="584" height="20"/>
@@ -414,22 +414,25 @@
                                     <constraint firstItem="grM-ve-Ebe" firstAttribute="top" secondItem="NUh-Iw-cuq" secondAttribute="top" id="c8v-Px-7B8"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wYa-mQ-Fdh" userLabel="Step two">
-                                <rect key="frame" x="0.0" y="66" width="600" height="534"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYa-mQ-Fdh" userLabel="Step two">
+                                <rect key="frame" x="0.0" y="69" width="600" height="531"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMA-C4-YFJ" userLabel="Link Posting View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="134"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMA-C4-YFJ" userLabel="Link Posting View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="133"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL you'd like to share" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lop-V3-a2v" userLabel="Link Text Field">
-                                                <rect key="frame" x="8" y="53" width="420" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL you'd like to share" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lop-V3-a2v" userLabel="Link Text Field">
+                                                <rect key="frame" x="8" y="52" width="420" height="30"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert" returnKeyType="go"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJt-Yu-74h" userLabel="Submit Button">
-                                                <rect key="frame" x="440" y="53" width="49" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJt-Yu-74h" userLabel="Submit Button">
+                                                <rect key="frame" x="440" y="52" width="49" height="30"/>
                                                 <animations/>
                                                 <state key="normal" title="Submit"/>
+                                                <connections>
+                                                    <action selector="submitLocation:" destination="wFp-Xe-Kra" eventType="touchUpInside" id="NFn-fG-XGk"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <animations/>
@@ -442,8 +445,8 @@
                                             <constraint firstItem="lop-V3-a2v" firstAttribute="leading" secondItem="yMA-C4-YFJ" secondAttribute="leadingMargin" id="znu-iO-UfS"/>
                                         </constraints>
                                     </view>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="pKg-SY-qED">
-                                        <rect key="frame" x="0.0" y="134" width="600" height="400"/>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="pKg-SY-qED">
+                                        <rect key="frame" x="0.0" y="133" width="600" height="398"/>
                                         <animations/>
                                     </mapView>
                                 </subviews>
@@ -481,6 +484,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="linkTextField" destination="lop-V3-a2v" id="ZoM-71-Y6N"/>
                         <outlet property="locationPrompt" destination="UMg-IY-pTj" id="sYe-yB-ipq"/>
                         <outlet property="locationSearchButton" destination="hXN-lO-QxH" id="aN9-ui-a0n"/>
                         <outlet property="locationTextField" destination="UbO-yj-6U4" id="cRy-bc-Naq"/>
@@ -489,6 +493,7 @@
                         <outlet property="searchActivityIndicator" destination="igR-8j-tfG" id="9lf-we-IeY"/>
                         <outlet property="stepOneView" destination="NUh-Iw-cuq" id="tud-No-4cY"/>
                         <outlet property="stepTwoView" destination="wYa-mQ-Fdh" id="sMo-M7-JGB"/>
+                        <outlet property="submitLocationButton" destination="dJt-Yu-74h" id="Gee-CP-gdC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0X-UT-5lQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+StudentInformation struct that reflects the information available from the
+Parse StudentInformation objects.
+*/
 struct StudentInformation {
 
 	let objectId: String
