@@ -332,18 +332,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsK-ea-gsa">
-                                <rect key="frame" x="532" y="32" width="48" height="30"/>
+                                <rect key="frame" x="8" y="28" width="53" height="33"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancel:" destination="wFp-Xe-Kra" eventType="touchUpInside" id="Nie-6m-F2E"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUh-Iw-cuq" userLabel="Step one">
-                                <rect key="frame" x="0.0" y="70" width="600" height="530"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NUh-Iw-cuq" userLabel="Step one">
+                                <rect key="frame" x="0.0" y="66" width="600" height="534"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grM-ve-Ebe" userLabel="Location prompt View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="265"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grM-ve-Ebe" userLabel="Location prompt View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="268"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-IY-pTj">
                                                 <rect key="frame" x="8" y="12" width="584" height="20"/>
@@ -413,20 +414,20 @@
                                     <constraint firstItem="grM-ve-Ebe" firstAttribute="top" secondItem="NUh-Iw-cuq" secondAttribute="top" id="c8v-Px-7B8"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYa-mQ-Fdh" userLabel="Step two">
-                                <rect key="frame" x="0.0" y="70" width="600" height="530"/>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wYa-mQ-Fdh" userLabel="Step two">
+                                <rect key="frame" x="0.0" y="66" width="600" height="534"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMA-C4-YFJ" userLabel="Link Posting View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="133"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMA-C4-YFJ" userLabel="Link Posting View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="134"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL you'd like to share" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lop-V3-a2v" userLabel="Link Text Field">
-                                                <rect key="frame" x="8" y="52" width="420" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL you'd like to share" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lop-V3-a2v" userLabel="Link Text Field">
+                                                <rect key="frame" x="8" y="53" width="420" height="30"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert" returnKeyType="go"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJt-Yu-74h" userLabel="Submit Button">
-                                                <rect key="frame" x="440" y="52" width="49" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJt-Yu-74h" userLabel="Submit Button">
+                                                <rect key="frame" x="440" y="53" width="49" height="30"/>
                                                 <animations/>
                                                 <state key="normal" title="Submit"/>
                                             </button>
@@ -441,8 +442,8 @@
                                             <constraint firstItem="lop-V3-a2v" firstAttribute="leading" secondItem="yMA-C4-YFJ" secondAttribute="leadingMargin" id="znu-iO-UfS"/>
                                         </constraints>
                                     </view>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="pKg-SY-qED">
-                                        <rect key="frame" x="0.0" y="133" width="600" height="397"/>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="pKg-SY-qED">
+                                        <rect key="frame" x="0.0" y="134" width="600" height="400"/>
                                         <animations/>
                                     </mapView>
                                 </subviews>
@@ -464,9 +465,8 @@
                         <color key="backgroundColor" red="0.93495488169999996" green="1" blue="0.92421901230000003" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="fsK-ea-gsa" secondAttribute="trailing" id="1lX-uh-Loy"/>
+                            <constraint firstItem="fsK-ea-gsa" firstAttribute="leading" secondItem="qUZ-vK-Egp" secondAttribute="leading" constant="8" id="08P-NG-ROH"/>
                             <constraint firstItem="oeE-jA-aP2" firstAttribute="top" secondItem="NUh-Iw-cuq" secondAttribute="bottom" id="8dT-oh-Cs5"/>
-                            <constraint firstItem="fsK-ea-gsa" firstAttribute="top" secondItem="PtY-VH-RDk" secondAttribute="bottom" constant="12" id="AJd-bH-IUc"/>
                             <constraint firstAttribute="trailing" secondItem="NUh-Iw-cuq" secondAttribute="trailing" id="CAS-g0-Yz3"/>
                             <constraint firstItem="NUh-Iw-cuq" firstAttribute="top" secondItem="fsK-ea-gsa" secondAttribute="bottom" constant="8" id="Ebo-4W-NdA"/>
                             <constraint firstItem="wYa-mQ-Fdh" firstAttribute="leading" secondItem="qUZ-vK-Egp" secondAttribute="leading" id="Nup-Zb-p9l"/>
@@ -474,6 +474,7 @@
                             <constraint firstItem="NUh-Iw-cuq" firstAttribute="leading" secondItem="qUZ-vK-Egp" secondAttribute="leading" id="RAa-lJ-47j"/>
                             <constraint firstItem="wYa-mQ-Fdh" firstAttribute="trailing" secondItem="qUZ-vK-Egp" secondAttribute="trailing" id="YIv-9F-Heq"/>
                             <constraint firstItem="oeE-jA-aP2" firstAttribute="top" secondItem="wYa-mQ-Fdh" secondAttribute="bottom" id="fEd-y9-O8A"/>
+                            <constraint firstItem="fsK-ea-gsa" firstAttribute="top" secondItem="PtY-VH-RDk" secondAttribute="bottom" constant="8" id="z0j-XN-CZh"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="a8M-UK-IVY" appends="YES" id="AS1-md-V46"/>
