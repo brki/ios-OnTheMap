@@ -71,15 +71,7 @@ class LocationPostingViewController: UIViewController {
 	}
 
 	func showAlert(title: String?, message: String? = nil, addToMainQueue: Bool? = true) {
-		let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-		alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-		if let main = addToMainQueue where main == true {
-			on_main_queue {
-				self.presentViewController(alertController, animated: true, completion: nil)
-			}
-		} else {
-			presentViewController(alertController, animated: true, completion: nil)
-		}
+		OnTheMap.showAlert(self, title: title, message: message, addToMainQueue: addToMainQueue)
 	}
 
 }

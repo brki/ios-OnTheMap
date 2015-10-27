@@ -104,20 +104,7 @@ class MapViewController: UIViewController {
 	}
 
 	func showAlert(title: String?, message: String?, addToMainQueue: Bool? = true) {
-		guard let _ = view.superview else {
-			// Main view not currently on screen, so don't show the alert VC.
-			print("showAlert: not currently on screen.  Alert: \(title), message: \(message)")
-			return
-		}
-		let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-		alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-		if let main = addToMainQueue where main == true {
-			on_main_queue {
-				self.presentViewController(alertController, animated: true, completion: nil)
-			}
-		} else {
-			presentViewController(alertController, animated: true, completion: nil)
-		}
+		OnTheMap.showAlert(self, title: title, message: message, addToMainQueue: addToMainQueue)
 	}
 }
 
