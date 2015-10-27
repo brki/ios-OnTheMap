@@ -421,17 +421,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="133"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL you'd like to share" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lop-V3-a2v" userLabel="Link Text Field">
-                                                <rect key="frame" x="8" y="52" width="420" height="30"/>
+                                                <rect key="frame" x="8" y="7" width="420" height="30"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert" returnKeyType="go"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJt-Yu-74h" userLabel="Submit Button">
-                                                <rect key="frame" x="440" y="52" width="49" height="30"/>
+                                                <rect key="frame" x="440" y="7" width="49" height="30"/>
                                                 <animations/>
                                                 <state key="normal" title="Submit"/>
                                                 <connections>
                                                     <action selector="submitLocation:" destination="wFp-Xe-Kra" eventType="touchUpInside" id="NFn-fG-XGk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiU-vq-rjV" userLabel="Browse Button">
+                                                <rect key="frame" x="8" y="45" width="101" height="30"/>
+                                                <animations/>
+                                                <state key="normal" title="Browse to URL"/>
+                                                <connections>
+                                                    <segue destination="Xfu-9r-hAZ" kind="presentation" id="b7O-Ng-FTd"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -441,7 +449,9 @@
                                             <constraint firstItem="dJt-Yu-74h" firstAttribute="leading" secondItem="lop-V3-a2v" secondAttribute="trailing" constant="12" id="2hw-jx-v5O"/>
                                             <constraint firstItem="lop-V3-a2v" firstAttribute="width" secondItem="yMA-C4-YFJ" secondAttribute="width" multiplier="0.7" id="2t6-FG-ebS"/>
                                             <constraint firstItem="dJt-Yu-74h" firstAttribute="centerY" secondItem="lop-V3-a2v" secondAttribute="centerY" id="KdK-lq-fYd"/>
-                                            <constraint firstItem="lop-V3-a2v" firstAttribute="centerY" secondItem="yMA-C4-YFJ" secondAttribute="centerY" id="eBs-VA-t4U"/>
+                                            <constraint firstItem="TiU-vq-rjV" firstAttribute="leading" secondItem="lop-V3-a2v" secondAttribute="leading" id="Kuo-p1-sHc"/>
+                                            <constraint firstItem="lop-V3-a2v" firstAttribute="centerY" secondItem="yMA-C4-YFJ" secondAttribute="centerY" multiplier="1/3" id="eBs-VA-t4U"/>
+                                            <constraint firstItem="TiU-vq-rjV" firstAttribute="top" secondItem="yMA-C4-YFJ" secondAttribute="top" constant="45" id="qd0-pN-UN5"/>
                                             <constraint firstItem="lop-V3-a2v" firstAttribute="leading" secondItem="yMA-C4-YFJ" secondAttribute="leadingMargin" id="znu-iO-UfS"/>
                                         </constraints>
                                     </view>
@@ -504,6 +514,50 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2749" y="22"/>
+        </scene>
+        <!--Browse To URL View Controller-->
+        <scene sceneID="0W9-xt-BL7">
+            <objects>
+                <viewController id="Xfu-9r-hAZ" customClass="BrowseToURLViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o9h-fw-6ab"/>
+                        <viewControllerLayoutGuide type="bottom" id="DEe-iu-uXc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9aK-GA-96n">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyD-DL-Azw" userLabel="WebViewContainer">
+                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQ2-Ie-lb9">
+                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xyD-DL-Azw" secondAttribute="trailing" id="1lt-nV-KdO"/>
+                            <constraint firstItem="DEe-iu-uXc" firstAttribute="top" secondItem="KQ2-Ie-lb9" secondAttribute="bottom" id="2OQ-GW-yvG"/>
+                            <constraint firstItem="xyD-DL-Azw" firstAttribute="height" secondItem="9aK-GA-96n" secondAttribute="height" multiplier="0.8" id="Va3-Tc-WXF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KQ2-Ie-lb9" secondAttribute="trailing" id="ZPu-Aj-cCJ"/>
+                            <constraint firstItem="DEe-iu-uXc" firstAttribute="top" secondItem="xyD-DL-Azw" secondAttribute="bottom" id="Zdo-yG-G06"/>
+                            <constraint firstItem="xyD-DL-Azw" firstAttribute="leading" secondItem="9aK-GA-96n" secondAttribute="leading" id="p54-VB-iMP"/>
+                            <constraint firstItem="KQ2-Ie-lb9" firstAttribute="leading" secondItem="9aK-GA-96n" secondAttribute="leadingMargin" id="qq3-lo-ZHf"/>
+                            <constraint firstItem="KQ2-Ie-lb9" firstAttribute="top" secondItem="9aK-GA-96n" secondAttribute="topMargin" id="xCs-hU-gDq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webViewContainer" destination="xyD-DL-Azw" id="gWM-Ki-Kro"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lda-I2-9P0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3428" y="22"/>
         </scene>
         <!--On The Map List-->
         <scene sceneID="TV7-c7-P5Z">

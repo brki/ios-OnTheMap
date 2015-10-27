@@ -20,6 +20,7 @@
 		D34A4A341BBFDBD000E1D491 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34A4A331BBFDBD000E1D491 /* ParseCredentials.swift */; };
 		D36BC56B1BDD5A9F00C2675F /* PlacePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36BC56A1BDD5A9F00C2675F /* PlacePickerData.swift */; };
 		D36BC56D1BDD5D4F00C2675F /* extension-CLPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36BC56C1BDD5D4F00C2675F /* extension-CLPlacemark.swift */; };
+		D36BC56F1BDFADC300C2675F /* BrowseToURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36BC56E1BDFADC300C2675F /* BrowseToURLViewController.swift */; };
 		D37E11FF1BCC4A38006BCDBB /* operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E11FE1BCC4A38006BCDBB /* operators.swift */; };
 		D37E12031BD273E7006BCDBB /* LocationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12021BD273E7006BCDBB /* LocationPostingViewController.swift */; };
 		D37E12051BD3C4E6006BCDBB /* UdacityStudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E12041BD3C4E6006BCDBB /* UdacityStudentInformation.swift */; };
@@ -73,6 +74,7 @@
 		D34A4A331BBFDBD000E1D491 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseCredentials.swift; sourceTree = "<group>"; };
 		D36BC56A1BDD5A9F00C2675F /* PlacePickerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePickerData.swift; sourceTree = "<group>"; };
 		D36BC56C1BDD5D4F00C2675F /* extension-CLPlacemark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CLPlacemark.swift"; sourceTree = "<group>"; };
+		D36BC56E1BDFADC300C2675F /* BrowseToURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseToURLViewController.swift; sourceTree = "<group>"; };
 		D37E11FE1BCC4A38006BCDBB /* operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = operators.swift; sourceTree = "<group>"; };
 		D37E12021BD273E7006BCDBB /* LocationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPostingViewController.swift; sourceTree = "<group>"; };
 		D37E12041BD3C4E6006BCDBB /* UdacityStudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityStudentInformation.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				D3E707551BB2A55E00E59045 /* ListViewController.swift */,
 				D3320A391BC96AC900120E12 /* ListDetailViewController.swift */,
 				D37E12021BD273E7006BCDBB /* LocationPostingViewController.swift */,
+				D36BC56E1BDFADC300C2675F /* BrowseToURLViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D37E12071BD3CD55006BCDBB /* extension-Array.swift in Sources */,
+				D36BC56F1BDFADC300C2675F /* BrowseToURLViewController.swift in Sources */,
 				D34A4A341BBFDBD000E1D491 /* ParseCredentials.swift in Sources */,
 				D3320A3F1BCC3BD200120E12 /* extension-UIColor.swift in Sources */,
 				D3320A341BC5835800120E12 /* StudentLocationTableData.swift in Sources */,

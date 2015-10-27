@@ -10,6 +10,14 @@ import UIKit
 import CoreLocation
 import MapKit
 
+// TODO:
+// * make search and go keyboard buttons on posting screen automatically do their target action.
+//   (or not, if need to allow user to browse to find url)
+
+// NICE-TODO:
+// * add grey navbar-like bar at top of posting screen for better visual consistency
+// * user-preference based text size.  perhaps simply a bit bigger in general, (especially for buttons?).
+
 class LocationPostingViewController: UIViewController {
 
 	var selfInfo: UdacityStudentInformation?
