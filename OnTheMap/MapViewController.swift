@@ -21,8 +21,6 @@ class MapViewController: UIViewController {
 		super.viewDidLoad()
 		mapView.delegate = self
 		annotationManager = AnnotationManager()
-		// TODO perhaps: try to get user's most recent coordinates and set initial map region to a fairly large region
-		//		mapView.region = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
 	}
 
 	override func viewWillAppear(animated: Bool) {

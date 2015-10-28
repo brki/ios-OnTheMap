@@ -16,7 +16,6 @@ class ParseClient: WebClient {
 	let parseAPIKey = parseAPICredentials.APIKey
 
 	// Contains the last-fetched student location information structs:
-	// TODO: this should be set to nil when user logs out:
 	var studentInformations: [StudentInformation]?
 
 	/**

@@ -19,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		dataStore = StudentLocationDataStore()
 	}
 
-
-
 	var appearance = Appearance()
 
 	func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
