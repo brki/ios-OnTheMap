@@ -84,6 +84,10 @@ class BrowseToURLViewController: UIViewController {
 	@IBAction func cancelPressed(sender: AnyObject) {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
+
+	@IBAction func viewTapped(sender: AnyObject) {
+		view.endEditing(true)
+	}
 }
 
 // MARK: WKNavigationDelegate
