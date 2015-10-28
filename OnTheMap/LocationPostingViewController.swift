@@ -10,10 +10,6 @@ import UIKit
 import CoreLocation
 import MapKit
 
-// TODO:
-// * make search and go keyboard buttons on posting screen automatically do their target action.
-//   (or not, if need to allow user to browse to find url)
-
 class LocationPostingViewController: UIViewController {
 
 	var selfInfo: UdacityStudentInformation?
