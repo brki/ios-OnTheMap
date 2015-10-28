@@ -23,7 +23,6 @@ func extractValidHTTPURL(URLString: String) -> NSURL? {
 		return nil
 	}
 
-
 	var url: NSURL?
 	url = NSURL(string: URLString)
 
@@ -44,19 +43,3 @@ func extractValidHTTPURL(URLString: String) -> NSURL? {
 	return validURL
 }
 
-func showAlert(vc: UIViewController, title: String?, message: String?, addToMainQueue: Bool? = true) {
-	guard let _ = vc.view.superview else {
-		// Main view not currently on screen, so don't show the alert VC.
-		print("showAlert: not currently on screen.  Alert: \(title), message: \(message)")
-		return
-	}
-	let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-	alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-	if let main = addToMainQueue where main == true {
-		on_main_queue { [weak vc] in
-			vc?.presentViewController(alertController, animated: true, completion: nil)
-		}
-	} else {
-		vc.presentViewController(alertController, animated: true, completion: nil)
-	}
-}

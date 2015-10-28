@@ -85,10 +85,6 @@ class BrowseToURLViewController: UIViewController {
 	@IBAction func cancelPressed(sender: AnyObject) {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
-
-	func showAlert(title: String?, message: String?, addToMainQueue: Bool? = true) {
-		OnTheMap.showAlert(self, title: title, message: message, addToMainQueue: addToMainQueue)
-	}
 }
 
 extension BrowseToURLViewController: WKNavigationDelegate {

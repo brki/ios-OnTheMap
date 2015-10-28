@@ -61,11 +61,6 @@ class LocationPostingViewController: UIViewController {
 	@IBAction func backgroundViewTapped(sender: AnyObject) {
 		view.endEditing(true)
 	}
-
-	func showAlert(title: String?, message: String? = nil, addToMainQueue: Bool? = true) {
-		OnTheMap.showAlert(self, title: title, message: message, addToMainQueue: addToMainQueue)
-	}
-
 }
 
 // MARK: step 1 specific methods

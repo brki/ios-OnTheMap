@@ -73,11 +73,6 @@ class ListViewController: UIViewController {
 		return true
 	}
 
-
-	func showAlert(title: String?, message: String?, addToMainQueue: Bool? = true) {
-		OnTheMap.showAlert(self, title: title, message: message, addToMainQueue: addToMainQueue)
-	}
-
 	func scrollToFirstRow() {
 		if tableView.numberOfRowsInSection(0) > 0 {
 			let indexPath = NSIndexPath(forRow: 0, inSection: 0)

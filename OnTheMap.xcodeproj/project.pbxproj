@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D30031771BBC2EA00084247C /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30031761BBC2EA00084247C /* StudentInformation.swift */; };
+		D329AA761BE10EC700794CCF /* extension-UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329AA751BE10EC700794CCF /* extension-UIViewController.swift */; };
 		D3320A2F1BC31C2900120E12 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A2E1BC31C2900120E12 /* DateFormatter.swift */; };
 		D3320A311BC5325700120E12 /* GCDHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A301BC5325700120E12 /* GCDHelpers.swift */; };
 		D3320A341BC5835800120E12 /* StudentLocationTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3320A331BC5835800120E12 /* StudentLocationTableData.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		D30031761BBC2EA00084247C /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		D329AA751BE10EC700794CCF /* extension-UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-UIViewController.swift"; sourceTree = "<group>"; };
 		D3320A2E1BC31C2900120E12 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		D3320A301BC5325700120E12 /* GCDHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDHelpers.swift; sourceTree = "<group>"; };
 		D3320A331BC5835800120E12 /* StudentLocationTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationTableData.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				D37E12061BD3CD55006BCDBB /* extension-Array.swift */,
 				D37E12081BD3E117006BCDBB /* extension-String.swift */,
 				D36BC56C1BDD5D4F00C2675F /* extension-CLPlacemark.swift */,
+				D329AA751BE10EC700794CCF /* extension-UIViewController.swift */,
 			);
 			name = CoreExtensions;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				D37E11FF1BCC4A38006BCDBB /* operators.swift in Sources */,
 				D36BC56D1BDD5D4F00C2675F /* extension-CLPlacemark.swift in Sources */,
 				D3320A361BC707A600120E12 /* utilities.swift in Sources */,
+				D329AA761BE10EC700794CCF /* extension-UIViewController.swift in Sources */,
 				D3320A3A1BC96AC900120E12 /* ListDetailViewController.swift in Sources */,
 				D3E707521BB2A55E00E59045 /* AppDelegate.swift in Sources */,
 				D30031771BBC2EA00084247C /* StudentInformation.swift in Sources */,

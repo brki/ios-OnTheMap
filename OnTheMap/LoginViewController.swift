@@ -45,16 +45,16 @@ class LoginViewController: UIViewController {
 
 		// Ensure username and password are present
 		guard let username = usernameField.text where username.characters.count > 0 else {
-			showErrorMessage("Please enter your username")
+			showAlert("Please enter your username")
 			return
 		}
 		let trimmedUsername = username.trim()
 		guard trimmedUsername.characters.count > 0 else {
-			showErrorMessage("Please enter a non-blank username")
+			showAlert("Please enter a non-blank username")
 			return
 		}
 		guard let password = passwordField.text where password.characters.count > 0 else {
-			showErrorMessage("Please enter your password")
+			showAlert("Please enter your password")
 			return
 		}
 
@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
 				} else {
 					guard let err = error else {
 						print("Unexpected authentication error: \(error)")
-						self.showErrorMessage("Unknown error occurred during login")
+						self.showAlert("Unknown error occurred during login")
 						return
 					}
 					if err.code == UdacityClient.Error.InvalidLogin.rawValue {
@@ -78,7 +78,7 @@ class LoginViewController: UIViewController {
 							self.shakeView()
 						}
 					} else {
-						self.showErrorMessage("Error in login process", detail: err.localizedDescription)
+						self.showAlert("Error in login process", message: err.localizedDescription)
 					}
 				}
 			}
@@ -87,16 +87,6 @@ class LoginViewController: UIViewController {
 
 	@IBAction func viewTapped(sender: AnyObject) {
 		view.endEditing(true)
-	}
-
-	func showErrorMessage(title: String?, detail: String? = nil, completionHandler: ((UIAlertAction) -> Void)? = nil) {
-		on_main_queue {
-			let alertController = UIAlertController(title: title, message: detail, preferredStyle: .Alert)
-			alertController.addAction(
-				UIAlertAction(title: "OK", style: .Default, handler: completionHandler)
-			)
-			self.presentViewController(alertController, animated: true, completion: nil)
-		}
 	}
 
 	func shakeView() {

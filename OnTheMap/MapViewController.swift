@@ -102,10 +102,6 @@ class MapViewController: UIViewController {
 			postUpdateHandler?(updated: true)
 		}
 	}
-
-	func showAlert(title: String?, message: String?, addToMainQueue: Bool? = true) {
-		OnTheMap.showAlert(self, title: title, message: message, addToMainQueue: addToMainQueue)
-	}
 }
 
 // MARK: MKMapViewDelegate methods
