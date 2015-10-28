@@ -118,7 +118,10 @@ extension BrowseToURLViewController: WKNavigationDelegate {
 	
 	func handleLoadingFailedWithError(error: NSError) {
 		activityIndicator.stopAnimating()
-		showAlert("Page load failed", message: error.localizedDescription)
+		// Ignore error if it's just that the active request was cancelled.
+		if error.code != NSURLError.Cancelled.rawValue {
+			showAlert("Page load failed", message: error.localizedDescription)
+		}
 	}
 }
 
