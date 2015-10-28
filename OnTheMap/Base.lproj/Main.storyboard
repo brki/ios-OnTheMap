@@ -448,10 +448,10 @@
                                         <constraints>
                                             <constraint firstItem="dJt-Yu-74h" firstAttribute="leading" secondItem="lop-V3-a2v" secondAttribute="trailing" constant="12" id="2hw-jx-v5O"/>
                                             <constraint firstItem="lop-V3-a2v" firstAttribute="width" secondItem="yMA-C4-YFJ" secondAttribute="width" multiplier="0.7" id="2t6-FG-ebS"/>
+                                            <constraint firstItem="TiU-vq-rjV" firstAttribute="top" secondItem="lop-V3-a2v" secondAttribute="bottom" constant="8" id="4sc-0N-P0y"/>
                                             <constraint firstItem="dJt-Yu-74h" firstAttribute="centerY" secondItem="lop-V3-a2v" secondAttribute="centerY" id="KdK-lq-fYd"/>
                                             <constraint firstItem="TiU-vq-rjV" firstAttribute="leading" secondItem="lop-V3-a2v" secondAttribute="leading" id="Kuo-p1-sHc"/>
                                             <constraint firstItem="lop-V3-a2v" firstAttribute="centerY" secondItem="yMA-C4-YFJ" secondAttribute="centerY" multiplier="1/3" id="eBs-VA-t4U"/>
-                                            <constraint firstItem="TiU-vq-rjV" firstAttribute="top" secondItem="yMA-C4-YFJ" secondAttribute="top" constant="45" id="qd0-pN-UN5"/>
                                             <constraint firstItem="lop-V3-a2v" firstAttribute="leading" secondItem="yMA-C4-YFJ" secondAttribute="leadingMargin" id="znu-iO-UfS"/>
                                         </constraints>
                                     </view>
