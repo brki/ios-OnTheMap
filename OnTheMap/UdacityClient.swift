@@ -15,6 +15,9 @@ class UdacityClient: WebClient {
 	var sessionID: String?
 	var accountKey: String?
 
+	/**
+	Log in using Udacity username and password.
+	*/
 	func authenticate(username: String, password: String, completionHandler: (Bool, NSError?) -> Void) {
 		let url = router.url(URLs.Session)!
 
@@ -33,6 +36,7 @@ class UdacityClient: WebClient {
 				return
 			}
 
+			// Handle response codes other than 200 (which represents success):
 			guard response.statusCode >= 200 && response.statusCode < 300 else {
 				if response.statusCode == 403 {
 					completionHandler(false, Error.InvalidLogin.asNSError())
@@ -58,6 +62,9 @@ class UdacityClient: WebClient {
 		}
 	}
 
+	/**
+	Logout of the Udacity account.
+	*/
 	func logout(completionHandler: (Bool, NSError?) -> Void) {
 
 		let url = router.url(URLs.Session)!
@@ -80,6 +87,7 @@ class UdacityClient: WebClient {
 				return
 			}
 
+			// Handle response codes other than 200 (which represents success):
 			guard response.statusCode >= 200 && response.statusCode < 300 else {
 				if response.statusCode == 403 {
 					completionHandler(false, Error.InvalidLogin.asNSError())
@@ -100,6 +108,9 @@ class UdacityClient: WebClient {
 		}
 	}
 
+	/**
+	Get the logged-in user's information.
+	*/
 	func selfInformation(completionHandler: (UdacityStudentInformation?, NSError?) -> Void) {
 		guard let selfId = accountKey else {
 			completionHandler(nil, Error.PreconditionNotMet.asNSError(detail: "Udacity account ID not available"))

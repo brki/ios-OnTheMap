@@ -115,7 +115,9 @@ extension ParseClient {
 extension ParseClient {
 
 	/**
-	TODO: doc
+	Submit the user's provided location and associated information.
+
+	The completion handler will be called with the Parse-generated objectId if successful, or with nil and and error if unsuccessful.
 	*/
 	func addLocation(uniqueKey: String, firstName: String, lastName: String, mapString: String, mediaURL: NSURL, latitude: Double, longitude: Double, completion: (objectId: String?, error: NSError?) -> Void) {
 

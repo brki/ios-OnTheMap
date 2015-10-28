@@ -83,6 +83,13 @@ extension LocationPostingViewController {
 		return NSAttributedString(attributedString: attributedString)
 	}
 
+	/**
+	User has pressed button to search for location.
+	
+	If no matching places found, alert the user.
+	If one matching place found, proceed to step two.
+	If several matching places found, let the user choose which one.
+	*/
 	@IBAction func searchForLocation(sender: AnyObject) {
 		let rawText = locationTextField.text ?? ""
 		let searchText = rawText.trim()
@@ -112,7 +119,6 @@ extension LocationPostingViewController {
 				}
 				switch clError {
 				case .GeocodeFoundNoResult:
-					// TODO: maybe an alert is not appropriate here - a message in the window might be better?
 					self.showAlert("No matching place found")
 				case .GeocodeCanceled:
 					// Request was cancelled by user.
@@ -144,6 +150,9 @@ extension LocationPostingViewController {
 		}
 	}
 
+	/**
+	Transition to step two.
+	*/
 	func handleSelectedPlace(place: CLPlacemark) {
 		guard let _ = place.location else {
 			self.showAlert("No geocoordinates ", message: "Matching place found, but no latitude / longitude values are available.  Try being more specific.")
@@ -156,6 +165,9 @@ extension LocationPostingViewController {
 		}
 	}
 
+	/**
+	Show a picker view for selecting among the places found by the search.
+	*/
 	func showPickerViewForPlaces(places: [CLPlacemark]) {
 		self.pickerData = PlacePickerData(placemarks: places, placeSelectedHandler: { [unowned self] place in
 			self.handleSelectedPlace(place)
@@ -217,7 +229,7 @@ extension LocationPostingViewController {
 	/**
 	Determine a suitable region to display based on the region found in the placemark object.
 
-	The returned region will always be at least 600 meter wide region, even if the placemark's region radius
+	The returned region will always be at least 600 meter wide, even if the placemark's region radius
 	is smaller.
 	*/
 	func displayRegionForPlacemark(placemark: CLPlacemark) -> MKCoordinateRegion? {
@@ -232,6 +244,9 @@ extension LocationPostingViewController {
 		return MKCoordinateRegionMakeWithDistance(center, radius, radius)
 	}
 
+	/**
+	Submit the user-entered location and URL.
+	*/
 	@IBAction func submitLocation(sender: AnyObject) {
 		guard let linkText = linkTextField.text?.trim() where linkText.characters.count > 0 else {
 			showAlert("Please enter a URL to share")
@@ -296,6 +311,8 @@ extension LocationPostingViewController {
 			if let urlText = linkTextField.text, url = extractValidHTTPURL(urlText) {
 				vc.startURLString = url.absoluteString
 			}
+
+			// If the user selected a URL, set the linkTextField value to that URL.
 			vc.completionHandler = {selectedURL in
 				if let url = selectedURL {
 					self.linkTextField.text = url.absoluteString

@@ -89,8 +89,12 @@ class LoginViewController: UIViewController {
 		view.endEditing(true)
 	}
 
+	/**
+	Applies a shake animation to the loginFormWrapper.
+
+	Code lifted from http://stackoverflow.com/a/9371196/948341 .
+	*/
 	func shakeView() {
-		// From http://stackoverflow.com/a/9371196/948341 :
 		let anim = CAKeyframeAnimation(keyPath:"transform")
 		shakeAnimation = anim
 		anim.values = [

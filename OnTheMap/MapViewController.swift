@@ -57,7 +57,9 @@ class MapViewController: UIViewController {
 	}
 
 	/**
-	Open the annotation that has the uniqueStringId == self.autoOpenAnnotationId.
+	Open the annotation that has the uniqueStringId matching the provided annotationId.
+	
+	This also focuses the map view on the selected animation.
 	*/
 	func autoOpenAnnotation(annotationId: String) {
 		for annotation in mapView.annotations {
@@ -74,7 +76,7 @@ class MapViewController: UIViewController {
 	}
 
 	/**
-	Ensures the lateste student annotations are display
+	Ensures the lateste student annotations are displayed.
 	
 	:param: forceRefresh If true, the StudentInformation structures will be downloaded again.  If false, they will only be
 			downloaded if none have already been downloaded.
@@ -108,6 +110,11 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MKMapViewDelegate {
 
+	/**
+	Provides a MKPinAnnotationView with a custom detail view.
+	
+	Older annotations are represented by a "faded-out" pin color.
+	*/
 	func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
 		let studentAnnotation = annotation as! StudentAnnotation
 		let recentness = CGFloat(studentAnnotation.recentness)
@@ -138,7 +145,7 @@ extension MapViewController: MKMapViewDelegate {
 		pin.pinTintColor = UIColor(red: 1, green: fade, blue: fade, alpha: 1)
 		return pin
 	}
-
+	
 	func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
 		view.addGestureRecognizer(
 			UITapGestureRecognizer(target: self, action: "annotationViewTapped:")

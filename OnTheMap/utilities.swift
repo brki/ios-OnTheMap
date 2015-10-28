@@ -42,4 +42,3 @@ func extractValidHTTPURL(URLString: String) -> NSURL? {
 
 	return validURL
 }
-

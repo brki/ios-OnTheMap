@@ -13,9 +13,9 @@ extension UIViewController {
 	/**
 	Show an alert.
 	
-	By default, this is explicitly added to the main thread queue, so it can be called
-	from non-main-threads without the calling code needing to specify that it will
-	be run on the main thread.
+	By default, the presentation of the alert is explicity added to the main thread queue,
+	so that this method can be called from non-main-threads without the calling code needing
+    to dispatch the call to this method on the main queue.
 	*/
 	func showAlert(title: String?, message: String? = nil, addToMainQueue: Bool? = true) {
 		guard let _ = self.view.superview else {

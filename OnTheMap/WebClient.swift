@@ -22,6 +22,9 @@ class WebClient {
 		}
 	}
 
+	/**
+	Start a NSURLSession data task.
+	*/
 	func makeDataRequest(url: NSURL, requestMethod: MethodType, let headers: [String: String]? = nil, body: String? = nil, completionHandler: ((data: NSData?, response: NSHTTPURLResponse?, error: NSError?) -> Void)? = nil) -> NSURLSessionDataTask {
 		let request = NSMutableURLRequest(URL: url)
 		request.HTTPMethod = requestMethod.rawValue
@@ -60,6 +63,13 @@ class WebClient {
 		return task
 	}
 
+	/**
+	Start a NSURLSession data task for a JSON request.
+	
+	This adds the ``Accept`` and, if a body is supplied, ``Content-Type`` headers with a value of ``application/json``.
+	
+	The JSON response is converted to native objects before calling the completion handler.
+	*/
 	func makeJSONDataRequest(url: NSURL, requestMethod: MethodType, var headers: [String: String]! = nil, body: String? = nil,
 		dataPreprocessor: ((NSData) -> NSData)? = nil,
 		completionHandler: ((jsonObject: AnyObject?, response: NSHTTPURLResponse?, error: NSError?) -> Void)? = nil) -> NSURLSessionDataTask {
@@ -105,6 +115,9 @@ class WebClient {
 	}
 
 
+	/**
+	Convert a native object (for example a Dictionary) to a String with a JSON representation of the native object.
+	*/
 	func objectToJsonString(obj: AnyObject) -> String? {
 		//		if let data = try? NSJSONSerialization.dataWithJSONObject(obj, options: .PrettyPrinted) {
 		if let data = try? NSJSONSerialization.dataWithJSONObject(obj, options: NSJSONWritingOptions(rawValue: 0)) {
@@ -113,6 +126,9 @@ class WebClient {
 		return nil
 	}
 
+	/**
+	Convert a JSON-containing NSData object to a Swift-native representation (e.g. Dictionary, Array, etc.)
+	*/
 	func parseJSON(data: NSData) -> (AnyObject?, NSError?) {
 		if let parsedResult = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) {
 			return (parsedResult, nil)
@@ -192,6 +208,9 @@ struct WebClientRouter {
 		}
 	}
 
+	/**
+	Provides a URL for the PathComponentProviding enum value, substituting the provided path and query parameters, if any.
+	*/
 	func url(enumObject: PathComponentProviding, pathParams: [String: String]? = nil, queryParams: [String: String]? = nil) -> NSURL? {
 		var path = enumObject.pathComponent()
 		if let params = pathParams {

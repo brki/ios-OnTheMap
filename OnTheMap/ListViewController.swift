@@ -25,6 +25,8 @@ class ListViewController: UIViewController {
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
+		// In the case of just switching from one tabbed view to another, there is no
+		// need to refresh the data from the network source.
 		refreshStudentLocations(forceRefresh: false)
 	}
 
@@ -45,6 +47,13 @@ class ListViewController: UIViewController {
 		}
 	}
 
+	/**
+	Gets the student locations and triggers the reloading of the table view's data.
+	
+	The table view is scrolled to the first row if the data refresh is successful.
+	
+	``forceRefresh: false`` can be used if there's no need to refresh the data from the network source.
+	*/
 	func refreshStudentLocations(forceRefresh forceRefresh: Bool = true) {
 		tableData.dataStore.fetchStudentLocations(forceRefresh) { locations, error in
 			guard error == nil && locations != nil else {
@@ -73,6 +82,9 @@ class ListViewController: UIViewController {
 		return true
 	}
 
+	/**
+	Scrolls to first row in the table, if the table has any rows.
+	*/
 	func scrollToFirstRow() {
 		if tableView.numberOfRowsInSection(0) > 0 {
 			let indexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -127,8 +139,11 @@ extension ListViewController {
 			}
 			let detailVC = segue.destinationViewController as! ListDetailViewController
 			detailVC.studentInformation = studentInfo
+
 		} else if segue.identifier == "ListToLocationPosting" {
 			let locationPostingVC = segue.destinationViewController as! LocationPostingViewController
+
+			// If a location was posted, refresh the list of locations.
 			locationPostingVC.locationPostedHandler = { [unowned self] coordinate, objectId in
 				self.refreshStudentLocations()
 			}

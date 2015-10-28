@@ -18,6 +18,12 @@ struct AnnotationManager {
 	var annotations = Set<StudentAnnotation>()
 	let dataStore = (UIApplication.sharedApplication().delegate as! AppDelegate).dataStore
 
+	/**
+	Updates the annotations from the data store.
+	
+	The difference between the old list of annotations and the new list of annotations is calculated, so
+	that the caller can use that information.
+	*/
 	mutating func updateStudentAnnotations(foreceRefresh forceRefresh: Bool = true, changeHandler: ((added: [StudentAnnotation]?, removed: [StudentAnnotation]?, error: NSError?) -> Void)?){
 
 		dataStore.fetchStudentLocations(forceRefresh) { locations, error in

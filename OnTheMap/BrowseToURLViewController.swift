@@ -34,8 +34,7 @@ class BrowseToURLViewController: UIViewController {
 	}
 
 	/**
-	Add web view to container, make it fill out the space available
-	in the webViewContainer view, and open initial URL.
+	Add web view to container and make it fill out the space available in the webViewContainer view.
 	*/
 	func addWebView() {
 		webView.translatesAutoresizingMaskIntoConstraints = false
@@ -87,6 +86,8 @@ class BrowseToURLViewController: UIViewController {
 	}
 }
 
+// MARK: WKNavigationDelegate
+
 extension BrowseToURLViewController: WKNavigationDelegate {
 
 	func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!) {
@@ -119,6 +120,9 @@ extension BrowseToURLViewController: WKNavigationDelegate {
 
 extension BrowseToURLViewController: UITextFieldDelegate {
 
+	/**
+	Open the URL that the user has entered.
+	*/
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		if let urlString = textField.text {
 			openURL(urlString)

@@ -34,6 +34,9 @@ class ListDetailViewController: UIViewController {
 		}
 	}
 
+	/**
+	Opens the map view with the associated student location annotation selected.
+	*/
 	@IBAction func seeOnMap(sender: UIButton) {
 		if let info = studentInformation {
 			guard let tabController = tabBarController,
