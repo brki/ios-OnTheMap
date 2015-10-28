@@ -439,7 +439,7 @@
                                                 <animations/>
                                                 <state key="normal" title="Browse to URL"/>
                                                 <connections>
-                                                    <segue destination="Xfu-9r-hAZ" kind="presentation" id="b7O-Ng-FTd"/>
+                                                    <segue destination="Xfu-9r-hAZ" kind="presentation" identifier="LocationPostingToBrowseToURL" id="b7O-Ng-FTd"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -527,31 +527,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hML-of-PRG" userLabel="Cancel">
+                                <rect key="frame" x="20" y="28" width="53" height="33"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="Xfu-9r-hAZ" eventType="touchUpInside" id="Nxb-X3-Tua"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R83-VF-yUd" userLabel="URLBar">
+                                <rect key="frame" x="-1" y="77" width="601" height="22"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert" returnKeyType="go"/>
+                            </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="32t-YS-gTf">
+                                <rect key="frame" x="572" y="78" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="0Ib-hz-Aqo">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <barButtonItem title="&lt;" id="gPc-PU-aPD" userLabel="Back">
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="Xfu-9r-hAZ" id="5pI-eH-qa7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="24" style="plain" systemItem="fixedSpace" id="9MB-ue-ktX"/>
+                                    <barButtonItem title="&gt;" id="leL-e2-gfM" userLabel="Forward">
+                                        <connections>
+                                            <action selector="forwardButtonPressed:" destination="Xfu-9r-hAZ" id="0Xz-Z0-UBA"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4ET-P7-egL"/>
+                                    <barButtonItem title="Open in Safari" id="Oi4-rn-0Bx">
+                                        <connections>
+                                            <action selector="openInSafari:" destination="Xfu-9r-hAZ" id="0p8-9S-ad1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyD-DL-Azw" userLabel="WebViewContainer">
-                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
+                                <rect key="frame" x="0.0" y="99" width="600" height="457"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQ2-Ie-lb9">
-                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-gF-JX1">
+                                <rect key="frame" x="467" y="28" width="105" height="33"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Use this page"/>
+                                <connections>
+                                    <action selector="selectThisPage:" destination="Xfu-9r-hAZ" eventType="touchUpInside" id="zkd-kg-Ffy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93495488169999996" green="1" blue="0.92421901230000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xyD-DL-Azw" secondAttribute="trailing" id="1lt-nV-KdO"/>
-                            <constraint firstItem="DEe-iu-uXc" firstAttribute="top" secondItem="KQ2-Ie-lb9" secondAttribute="bottom" id="2OQ-GW-yvG"/>
-                            <constraint firstItem="xyD-DL-Azw" firstAttribute="height" secondItem="9aK-GA-96n" secondAttribute="height" multiplier="0.8" id="Va3-Tc-WXF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KQ2-Ie-lb9" secondAttribute="trailing" id="ZPu-Aj-cCJ"/>
-                            <constraint firstItem="DEe-iu-uXc" firstAttribute="top" secondItem="xyD-DL-Azw" secondAttribute="bottom" id="Zdo-yG-G06"/>
+                            <constraint firstItem="0Ib-hz-Aqo" firstAttribute="width" secondItem="9aK-GA-96n" secondAttribute="width" id="6xB-GF-ZlR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PnM-gF-JX1" secondAttribute="trailing" constant="8" id="HzU-h4-YaY"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="hML-of-PRG" secondAttribute="leading" id="Mog-0y-Q1X"/>
+                            <constraint firstItem="32t-YS-gTf" firstAttribute="centerY" secondItem="R83-VF-yUd" secondAttribute="centerY" id="NK0-AW-4aI"/>
+                            <constraint firstItem="R83-VF-yUd" firstAttribute="width" secondItem="xyD-DL-Azw" secondAttribute="width" id="Ouo-V9-Q5p"/>
+                            <constraint firstItem="R83-VF-yUd" firstAttribute="top" secondItem="hML-of-PRG" secondAttribute="bottom" constant="16" id="QIc-cM-FSr"/>
+                            <constraint firstItem="PnM-gF-JX1" firstAttribute="baseline" secondItem="hML-of-PRG" secondAttribute="baseline" id="Uey-xT-WWu"/>
+                            <constraint firstAttribute="bottom" secondItem="0Ib-hz-Aqo" secondAttribute="bottom" id="ZGu-Vr-RVk"/>
+                            <constraint firstItem="xyD-DL-Azw" firstAttribute="bottom" secondItem="0Ib-hz-Aqo" secondAttribute="top" id="aHY-92-juk"/>
+                            <constraint firstItem="32t-YS-gTf" firstAttribute="trailing" secondItem="R83-VF-yUd" secondAttribute="trailing" constant="-8" id="fVM-wI-KH9"/>
+                            <constraint firstItem="xyD-DL-Azw" firstAttribute="top" secondItem="R83-VF-yUd" secondAttribute="bottom" id="lde-ra-F6M"/>
+                            <constraint firstItem="hML-of-PRG" firstAttribute="top" secondItem="o9h-fw-6ab" secondAttribute="bottom" constant="8" id="mv7-Zh-zMy"/>
                             <constraint firstItem="xyD-DL-Azw" firstAttribute="leading" secondItem="9aK-GA-96n" secondAttribute="leading" id="p54-VB-iMP"/>
-                            <constraint firstItem="KQ2-Ie-lb9" firstAttribute="leading" secondItem="9aK-GA-96n" secondAttribute="leadingMargin" id="qq3-lo-ZHf"/>
-                            <constraint firstItem="KQ2-Ie-lb9" firstAttribute="top" secondItem="9aK-GA-96n" secondAttribute="topMargin" id="xCs-hU-gDq"/>
+                            <constraint firstItem="R83-VF-yUd" firstAttribute="centerX" secondItem="xyD-DL-Azw" secondAttribute="centerX" id="siw-5b-BJL"/>
+                            <constraint firstItem="0Ib-hz-Aqo" firstAttribute="centerX" secondItem="9aK-GA-96n" secondAttribute="centerX" id="vdr-6T-kbN"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="URLBar" destination="R83-VF-yUd" id="FE8-U1-8d2"/>
+                        <outlet property="activityIndicator" destination="32t-YS-gTf" id="0ge-sd-DiU"/>
+                        <outlet property="backButton" destination="gPc-PU-aPD" id="Jsb-kC-enM"/>
+                        <outlet property="forwardButton" destination="leL-e2-gfM" id="h8f-aY-RNb"/>
                         <outlet property="webViewContainer" destination="xyD-DL-Azw" id="gWM-Ki-Kro"/>
                     </connections>
                 </viewController>

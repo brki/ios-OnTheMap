@@ -14,10 +14,6 @@ import MapKit
 // * make search and go keyboard buttons on posting screen automatically do their target action.
 //   (or not, if need to allow user to browse to find url)
 
-// NICE-TODO:
-// * add grey navbar-like bar at top of posting screen for better visual consistency
-// * user-preference based text size.  perhaps simply a bit bigger in general, (especially for buttons?).
-
 class LocationPostingViewController: UIViewController {
 
 	var selfInfo: UdacityStudentInformation?
@@ -291,6 +287,28 @@ extension LocationPostingViewController {
 			self.locationPostedHandler?(coordinate: coordinate, objectId: objectId!)
 			on_main_queue {
 				self.dismissViewControllerAnimated(true, completion: nil)
+			}
+		}
+	}
+}
+
+
+// MARK: Segues
+
+extension LocationPostingViewController {
+
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "LocationPostingToBrowseToURL" {
+			let vc = segue.destinationViewController as! BrowseToURLViewController
+
+			// If the link text field's value appears to be a valid URL, start browsing with it.
+			if let urlText = linkTextField.text, url = extractValidHTTPURL(urlText) {
+				vc.startURLString = url.absoluteString
+			}
+			vc.completionHandler = {selectedURL in
+				if let url = selectedURL {
+					self.linkTextField.text = url.absoluteString
+				}
 			}
 		}
 	}
