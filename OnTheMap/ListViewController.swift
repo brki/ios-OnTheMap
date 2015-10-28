@@ -90,6 +90,7 @@ extension ListViewController: UITableViewDelegate {
 			print("tableView(_:didSelectRowAtIndexPath): no location data available")
 			return
 		}
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
 		openURL(studentInfo.mediaURL)
 	}
 
