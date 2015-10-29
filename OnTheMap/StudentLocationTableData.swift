@@ -14,15 +14,15 @@ protocol ReusableCellProviding: class {
 
 class StudentLocationTableData: NSObject {
 
-	let dataStore = (UIApplication.sharedApplication().delegate as! AppDelegate).dataStore
+	let dataStore = StudentLocationDataStore.sharedInstance
 	weak var cellProvider: ReusableCellProviding!
 
 	init(cellProvider: ReusableCellProviding) {
 		self.cellProvider = cellProvider
 	}
 
-	var locations: [StudentInformation]? {
-		return dataStore.studentLocations
+	func studentInformationForIndexPath(indexPath: NSIndexPath) -> StudentInformation? {
+		return dataStore.studentLocations?[indexPath.row]
 	}
 }
 
@@ -31,7 +31,7 @@ class StudentLocationTableData: NSObject {
 extension StudentLocationTableData: UITableViewDataSource {
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		guard let locationData = locations else {
+		guard let locationData = dataStore.studentLocations else {
 			print("datastore locations unexpectedly nil (1)")
 			return UITableViewCell()
 		}
@@ -40,7 +40,7 @@ extension StudentLocationTableData: UITableViewDataSource {
 	}
 
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		guard let locationData = locations else {
+		guard let locationData = dataStore.studentLocations else {
 			print("datastore locations unexpectedly nil (2)")
 			return 0
 		}

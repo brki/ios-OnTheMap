@@ -15,9 +15,6 @@ class ParseClient: WebClient {
 	let parseApplicationID = parseAPICredentials.applicationID
 	let parseAPIKey = parseAPICredentials.APIKey
 
-	// Contains the last-fetched student location information structs:
-	var studentInformations: [StudentInformation]?
-
 	/**
 	Add the Parse application headers and make the request
 	*/
@@ -74,20 +71,6 @@ extension ParseClient {
 
 extension ParseClient {
 
-	/**
-	Convenience method to get the most-recently fetched student info results.
-	
-	If no student info results have ever been fetched, then this method will
-	do the initial fetching.
-	*/
-	func studentInfos(handler: ([StudentInformation]?, NSError?) -> Void) {
-		if let studentInfos = studentInformations {
-			handler(studentInfos, nil)
-		} else {
-			latestStudentInfos(handler)
-		}
-	}
-
 	func latestStudentInfos(handler: ([StudentInformation]?, NSError?) -> Void) {
 		getStudentLocations() { results, error in
 			guard let results = results else {
@@ -104,13 +87,13 @@ extension ParseClient {
 					newStudentInfos.append(info)
 				}
 			}
-			self.studentInformations = newStudentInfos
 			handler(newStudentInfos, nil)
 		}
 	}
 }
 
 // MARK: StudentInformation posting
+
 extension ParseClient {
 
 	/**

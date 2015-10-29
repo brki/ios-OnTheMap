@@ -98,7 +98,7 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate {
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		guard let studentInfo = tableData.locations?[indexPath.row] else {
+		guard let studentInfo = tableData.studentInformationForIndexPath(indexPath) else {
 			print("tableView(_:didSelectRowAtIndexPath): no location data available")
 			return
 		}
@@ -133,7 +133,7 @@ extension ListViewController {
 				print("listToDetail expects sender to be an indexPath")
 				return
 			}
-			guard let studentInfo = tableData.locations?[indexPath.row] else {
+			guard let studentInfo = tableData.studentInformationForIndexPath(indexPath) else {
 				print("segue listToDetail: no location data available")
 				return
 			}

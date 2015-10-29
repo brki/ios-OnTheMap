@@ -9,6 +9,9 @@
 import Foundation
 
 class StudentLocationDataStore {
+	static let sharedInstance = StudentLocationDataStore()
+
+	// This is the central store for StudentInformation.
 	var studentLocations: [StudentInformation]?
 
 	/**
@@ -32,5 +35,12 @@ class StudentLocationDataStore {
 				handler(locations: nil, error: error)
 			}
 		}
+	}
+
+	/**
+	Clears all data from the store.
+	*/
+	func clearData() {
+		studentLocations = []
 	}
 }

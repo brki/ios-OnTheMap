@@ -12,11 +12,11 @@ import MapKit
 struct AnnotationManager {
 
 	/**
-	A reference is kept to the last-fetched annotations so that a difference can be calculated the next time the annotations
+	A reference is kept to the last-created annotations so that a difference can be calculated the next time the annotations
 	are updated.
 	*/
 	var annotations = Set<StudentAnnotation>()
-	let dataStore = (UIApplication.sharedApplication().delegate as! AppDelegate).dataStore
+	let dataStore = StudentLocationDataStore.sharedInstance
 
 	/**
 	Updates the annotations from the data store.
