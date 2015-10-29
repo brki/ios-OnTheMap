@@ -8,7 +8,7 @@
 
 extension ParseClient {
 	struct parseAPICredentials {
-		static let applicationID = "PARSE_APPLICATION_ID_GOES_HERE"
-		static let APIKey = "PARSE_API_KEY_GOES_HERE"
+		static let applicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+		static let APIKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
 	}
 }
